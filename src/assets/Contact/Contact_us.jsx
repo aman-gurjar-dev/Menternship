@@ -1,4 +1,6 @@
 import React from "react";
+import MyImage from "./logo.png";
+import effect from "./Ellipse 1.png";
 
 const Contact_us = () => {
   return (
