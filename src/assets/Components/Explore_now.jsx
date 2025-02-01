@@ -1,10 +1,6 @@
 import React from "react";
 import MyImage from "../Images/logo.png";
 import effect from "../Images/Ellipse 1.png";
-import Web_dev from "../Images/Untitled design (1) 1.png";
-import ai from "../Images/ai.png";
-import ds from "../Images/data-science-analyzing-interpreting-complex-data-projection-virtual-screen-business-technology-concept-data-science-347778743 1.png";
-// import { NavLink } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 
