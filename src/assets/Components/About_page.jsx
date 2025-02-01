@@ -17,37 +17,48 @@ const About_page = () => {
           <ul class=" ml-70 mt-5 w-auto list-none inline relative z-10">
             <li class="inline-block mx-9">
               {" "}
-              <NavLink
-                to="/"
-                className=" font-bold hover:text-xl hover:font-bold"
-              >
+              <NavLink to="/" className=" hover:text-xl hover:font-bold">
                 Home
               </NavLink>
             </li>
             <li class="inline-block mx-9">
               <NavLink
                 to="/About"
-                className=" font-bold hover:text-xl hover:font-bold"
+                className=" font-bold hover:text-xl active:font-bold "
               >
                 About
               </NavLink>
             </li>
             <li class="inline-block mx-9 ">
-              <NavLink to="/Contact" className=" hover:text-xl font-bold">
+              <NavLink to="/Contact" className=" hover:text-xl ">
                 Contact
               </NavLink>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div className=" flex justify-baseline">
           <img
             src={sideImage}
             alt="Side Image"
-            className=" max-w-2xl ml-20 relative bottom-20"
+            className=" max-w-[45vw] mr-20 relative bottom-20"
           />
-
-          <p></p>
+          <span className=" mt-5">
+            <h1 className=" text-center text-3xl font-bold">
+              About <p className=" inline text-[#A24BFF]">US</p>
+            </h1>
+            <p className=" text-2xl mt-4">
+              At Menternship, we’re dedicated to helping <br /> students bridge
+              the gap between <br />
+              education and industry. <br /> <br /> We offer a unique
+              combination of
+              <p className=" text-[#A24BFF]">
+                mentorship and internship opportunities,
+              </p>
+              giving students hands-on experience while <br />
+              learning from real industry experts.
+            </p>
+          </span>
         </div>
 
         <div className="">

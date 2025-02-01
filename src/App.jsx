@@ -2,16 +2,21 @@ import Home from "./assets/Components/Home";
 import About_page from "./assets/Components/About_page";
 import Contact_us from "./assets/Components/Contact_us";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Explore from "./assets/Components/Explore";
+import Explore_now from "./assets/Components/Explore_now";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    // children:[
-    //   {
-    //     path:"StartNow",
-    //   },{},{}
-    // ]
+  },
+  {
+    path: "/Explore_more",
+    element: <Explore />,
+  },
+  {
+    path: "/Explore_web",
+    element: <Explore_now />,
   },
   {
     path: "/About",
