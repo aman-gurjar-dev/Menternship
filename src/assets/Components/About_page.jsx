@@ -1,7 +1,7 @@
 import React from "react";
-import MyImage from "./logo.png";
-import effect from "./Ellipse 1.png";
-import sideImage from "./WhatsApp_Image_2025-01-24_at_22.07.39_b8dce0b9-removebg-preview 1.png";
+import MyImage from "../Images/logo.png";
+import effect from "../Images/Ellipse 1.png";
+import sideImage from "../Images/WhatsApp_Image_2025-01-24_at_22.07.39_b8dce0b9-removebg-preview 1.png";
 import { NavLink } from "react-router-dom";
 
 const About_page = () => {

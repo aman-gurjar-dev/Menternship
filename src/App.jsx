@@ -1,15 +1,29 @@
-import Home from "./assets/Home/Home";
-import About_page from "./assets/About/About_page";
-import Contact_us from "./assets/Contact/Contact_us";
-import { Route, Routes } from "react-router-dom";
+import Home from "./assets/Components/Home";
+import About_page from "./assets/Components/About_page";
+import Contact_us from "./assets/Components/Contact_us";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    // children:[
+    //   {
+    //     path:"StartNow",
+    //   },{},{}
+    // ]
+  },
+  {
+    path: "/About",
+    element: <About_page />,
+  },
+  {
+    path: "/Contact",
+    element: <Contact_us />,
+  },
+]);
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/About" element={<About_page />} />
-      <Route path="/Contact" element={<Contact_us />} />
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

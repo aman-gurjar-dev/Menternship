@@ -1,12 +1,12 @@
 import React from "react";
-import MyImage from "./logo.png";
-import photo1 from "./Rectangle 4.png";
-import photo2 from "./Rectangle 2.png";
-import photo3 from "./Rectangle 6.png";
-import photo4 from "./Rectangle 5.png";
-import photo5 from "./Rectangle 3.png";
-import photo6 from "./Rectangle 7.png";
-import effect from "./Ellipse 1.png";
+import MyImage from "../Images/logo.png";
+import photo1 from "../Images/Rectangle 4.png";
+import photo2 from "../Images/Rectangle 2.png";
+import photo3 from "../Images/Rectangle 6.png";
+import photo4 from "../Images/Rectangle 5.png";
+import photo5 from "../Images/Rectangle 3.png";
+import photo6 from "../Images/Rectangle 7.png";
+import effect from "../Images/Ellipse 1.png";
 import { NavLink } from "react-router-dom";
 const Home = () => {
   return (
@@ -21,23 +21,20 @@ const Home = () => {
           <ul class=" ml-70 mt-5 w-auto list-none inline relative z-10">
             <li class="inline-block mx-9">
               {" "}
-              <NavLink
-                to="/"
-                className=" font-bold hover:text-xl hover:font-bold"
-              >
+              <NavLink to="/" className=" hover:text-xl active:font-bold">
                 Home
               </NavLink>
             </li>
             <li class="inline-block mx-9">
-              <NavLink
-                to="/About"
-                className=" font-bold hover:text-xl hover:font-bold"
-              >
+              <NavLink to="/About" className="  hover:text-xl active:font-bold">
                 About
               </NavLink>
             </li>
             <li class="inline-block mx-9 ">
-              <NavLink to="/Contact" className=" hover:text-xl font-bold">
+              <NavLink
+                to="/Contact"
+                className=" hover:text-xl active:font-bold"
+              >
                 Contact
               </NavLink>
             </li>
@@ -55,18 +52,30 @@ const Home = () => {
           </div>
 
           <div className=" mt-10 ml-50">
-            <span className=" mb-1.5 ">
-              <button className="bg-[#477CD6] p-1 px-16 rounded-3xl mr-5 mb-5 font-bold">
+            <span className=" mb-5 ">
+              <NavLink
+                to="/StartNow"
+                className="bg-[#477CD6] p-1 px-16 rounded-3xl mr-5 mb-5 font-bold"
+              >
                 Start Today
-              </button>
-              <button className="bg-[#FFF5F5] text-black p-1 px-16 rounded-3xl font-bold">
+              </NavLink>
+
+              <NavLink
+                to="/Register"
+                className="bg-[#FFF5F5] text-black p-1 px-16 rounded-3xl font-bold"
+              >
                 Register
-              </button>
+              </NavLink>
             </span>
             <br />
-            <button className="bg-[#D68F47] text-black rounded-3xl px-41 py-3 font-bold">
-              Explore More
-            </button>
+            <div className="mt-8">
+              <NavLink
+                to="/Explore_more"
+                className="bg-[#D68F47] text-black rounded-3xl px-41 py-3 font-bold"
+              >
+                Explore More
+              </NavLink>
+            </div>
           </div>
         </div>
         <div className=" absolute right-0 top-0 min-h-full z-10">
