@@ -21,7 +21,10 @@ const Home = () => {
           <ul class=" ml-70 mt-5 w-auto list-none inline relative z-10">
             <li class="inline-block mx-9">
               {" "}
-              <NavLink to="/" className=" hover:text-xl active:font-bold">
+              <NavLink
+                to="/"
+                className=" font-bold hover:text-xl active:font-bold "
+              >
                 Home
               </NavLink>
             </li>

@@ -16,23 +16,20 @@ const Contact_us = () => {
           <ul class=" ml-70 mt-5 w-auto list-none inline relative z-10">
             <li class="inline-block mx-9">
               {" "}
-              <NavLink
-                to="/"
-                className=" font-bold hover:text-xl hover:font-bold"
-              >
+              <NavLink to="/" className="  hover:text-xl hover:font-bold">
                 Home
               </NavLink>
             </li>
             <li class="inline-block mx-9">
-              <NavLink
-                to="/About"
-                className=" font-bold hover:text-xl hover:font-bold"
-              >
+              <NavLink to="/About" className="hover:text-xl hover:font-bold">
                 About
               </NavLink>
             </li>
             <li class="inline-block mx-9 ">
-              <NavLink to="/Contact" className=" hover:text-xl font-bold">
+              <NavLink
+                to="/Contact"
+                className="font-bold hover:text-xl active:font-bold "
+              >
                 Contact
               </NavLink>
             </li>
