@@ -14,12 +14,15 @@ const Contact_us = () => {
           <img
             src={MyImage}
             alt=" LOGO "
-            className=" max-w-[9vw] ml-15 mt-4 inline "
+            className=" lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 inline w-20"
           />
-          <ul class=" ml-[12vw] mt-[5vh] w-auto list-none inline relative z-10">
+          <ul class=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-10">
             <li class="inline-block mx-[3vw]">
               {" "}
-              <NavLink to="/" className="  hover:text-xl hover:font-bold">
+              <NavLink
+                to="/"
+                className="font-bold  hover:text-xl hover:font-bold"
+              >
                 Home
               </NavLink>
             </li>
@@ -31,7 +34,7 @@ const Contact_us = () => {
             <li class="inline-block mx-[3vw] ">
               <NavLink
                 to="/Contact"
-                className="font-bold hover:text-xl active:font-bold "
+                className="hover:text-xl active:font-bold "
               >
                 Contact
               </NavLink>
@@ -39,16 +42,18 @@ const Contact_us = () => {
           </ul>
         </div>
 
-        <span className=" absolute top-7 right-10 rounded-full bg-[#1a171e7b] w-[25vw] h-[15vh]  text-center font-semibold text-3xl text-[#FFFFFF] z-10  p-2 m-auto ">
-          Menternship{" "}
-          <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
-          Opportunity
-        </span>
+        <div className="invisible md:visible">
+          <span className=" absolute lg:top-4 top-3 right-10 rounded-full bg-[#1a171e7b] w-[25vw] h-[13vh] lg:h-[13vh] text-center  font-semibold lg:text-xl xl:text-2xl  text-[#FFFFFF] z-10  p-2 m-auto ">
+            Menternship{" "}
+            <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
+            Opportunity
+          </span>
+        </div>
 
-        <div>
-          <div className=" w-[80vw] h-[70vh] flex justify-center items-center mx-[10vw] mt-[3vh]">
-            <div className="w-[30vw] h-[70vh] bg-[#A488DB]  ">
-              <div className=" mt-[4vh]">
+        <div className="mt-10">
+          <div className=" w-[80vw] h-[70vh] flex justify-center items-center mx-[10vw] mt-[3vh] ">
+            <div className="sm:w-[30vw] h-[70vh] bg-[#A488DB] invisible sm:visible w-0 ">
+              <div className=" mt-[4vh] ">
                 <h1 className="text-4xl text-center text-black font-bold">
                   Contact <span className=" text-[#F86B00]">Us</span>
                 </h1>
@@ -56,7 +61,7 @@ const Contact_us = () => {
                   We are here to help you
                 </h1>
               </div>
-              <div className=" mt-[7vh] font-bold">
+              <div className=" mt-[7vh] font-bold ">
                 <div className=" flex justify-center my-[4vh]">
                   <img
                     src={phone}
@@ -92,35 +97,35 @@ const Contact_us = () => {
                 </div>
               </div>
             </div>
-            <div className=" bg-[#2E103B] w-[50vw] h-[70vh] ">
+            <div className=" bg-[#2E103B] w-[80vw] sm:w-[50vw] h-[70vh] ">
               <div className=" relative left-[5vw] top-[5vh] flex-col">
-                <h1 className=" text-4xl font-bold">Let’s Talk</h1>
-                <h1 className=" text-xl text-blue-400">
+                <h1 className=" sm:text-4xl font-bold text-2xl">Let’s Talk</h1>
+                <h1 className=" sm:text-xl text-blue-400">
                   Feel free to contact us below
                 </h1>
                 <input
                   type="text"
-                  className=" w-[25vw] h-[5vh] bg-white text-black block my-4"
+                  className=" w-[60vw] sm:w-[25vw] h-[5vh] bg-white text-black block my-4"
                   placeholder="Your Name..."
                 />
                 <input
                   type="text"
-                  className=" w-[25vw] h-[5vh] text-black bg-white block my-4"
+                  className=" w-[60vw] sm:w-[25vw]  h-[5vh] text-black bg-white block my-4"
                   placeholder="Email Id..."
                 />
                 <input
                   type="text"
-                  className=" w-[25vw] h-[5vh] text-black bg-white block my-4"
+                  className=" w-[60vw] sm:w-[25vw]  h-[5vh] text-black bg-white block my-4"
                   placeholder="Phone Number"
                 />
                 <textarea
                   name=""
                   id=""
-                  className=" w-[25vw] h-[10vh] text-black bg-white my-4"
+                  className="w-[60vw] sm:w-[25vw] h-[10vh] text-black bg-white my-4"
                   placeholder="Message.."
                 ></textarea>
                 <div>
-                  <button className=" rounded-4xl bg-[#477CD6] px-[5vw] py-[1vh] items-center">
+                  <button className=" rounded-4xl bg-[#477CD6] px-[5vw] relative z-10 py-[1vh] items-center">
                     {" "}
                     SUBMIT
                   </button>

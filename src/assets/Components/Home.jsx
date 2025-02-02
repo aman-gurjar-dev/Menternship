@@ -16,14 +16,14 @@ const Home = () => {
           <img
             src={MyImage}
             alt=" LOGO "
-            className=" max-w-[9vw] ml-15 mt-4 inline "
+            className=" lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 inline w-20"
           />
-          <ul class=" ml-[12vw] mt-[5vh] w-auto list-none inline relative z-10">
+          <ul class=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-10">
             <li class="inline-block mx-[3vw]">
               {" "}
               <NavLink
                 to="/"
-                className="font-bold   hover:text-xl hover:font-bold"
+                className="font-bold  hover:text-xl hover:font-bold"
               >
                 Home
               </NavLink>
@@ -43,29 +43,32 @@ const Home = () => {
             </li>
           </ul>
         </div>
-        <div className="mt-[12vh] relative z-10">
-          <div className="mt-[7vh] ml-[14vw]">
-            <h1 className="text-5xl font-bold">Guiding Ambitions,</h1>
-            <h1 className="text-5xl font-bold">
-              Building <p className=" text-[#3759D3] inline">Careers</p>
-            </h1>
-            <h1 className="text-xl mt-3">
-              Where Mentorship Meets Opportunity.
-            </h1>
+        <div className="sm:mt-[20vh] mt-10 relative z-10 ">
+          <div>
+            <div className="mt-[7vh] sm:ml-[14vw] ml-3">
+              <h1 className="text-2xl sm:text-5xl font-bold">
+                Guiding Ambitions,
+              </h1>
+              <h1 className="text-2xl sm:text-5xl font-bold">
+                Building <p className=" text-[#3759D3] inline">Careers</p>
+              </h1>
+              <h1 className="sm:text:xl mt-3 ">
+                Where Mentorship Meets Opportunity.
+              </h1>
+            </div>
           </div>
-
-          <div className=" mt-[6vh] ml-[14vw]">
+          <div className=" mt-[6vh] sm:ml-[14vw] ml-3">
             <span className=" mb-[1vh] ">
               <NavLink
                 to="/StartNow"
-                className="bg-[#477CD6] p-1 px-16 rounded-3xl mr-5 mb-5 font-bold"
+                className="bg-[#477CD6] p-1 sm:px-16 px-7 rounded-3xl mr-5 mb-5 font-bold"
               >
                 Start Today
               </NavLink>
 
               <NavLink
                 to="/Register"
-                className="bg-[#FFF5F5] text-black p-1 px-16 rounded-3xl font-bold"
+                className="bg-[#FFF5F5] text-black p-1 sm:px-16 px-7 rounded-3xl font-bold"
               >
                 Register
               </NavLink>
@@ -74,23 +77,23 @@ const Home = () => {
             <div className="mt-8">
               <NavLink
                 to="/Explore_more"
-                className="bg-[#D68F47] text-black rounded-3xl px-41 py-3 font-bold"
+                className="bg-[#D68F47] text-black rounded-3xl sm:px-41 sm:py-3 px-23 py-3 font-bold"
               >
                 Explore More
               </NavLink>
             </div>
           </div>
         </div>
-        <div className=" absolute right-0 top-0 min-h-full z-10 ">
+        <div className=" absolute right-0 top-0 min-h-full z-10 w-0 lg:w-auto">
           <img
             src={photo1}
             alt=" Photo 1"
-            className="max-h-[54vh] relative top-[3vh] right-90"
+            className="max-h-[50vh] relative top-[5vh]  right-80 xl:right-90 "
           />
           <img
             src={photo2}
             alt=" Photo 1"
-            className=" absolute -top-0 right-50 max-h-[53vh]"
+            className=" absolute -top-0 right-45 max-h-[53vh] xl:right-50"
           />
           <img
             src={photo3}
@@ -100,12 +103,12 @@ const Home = () => {
           <img
             src={photo4}
             alt=" Photo 1"
-            className="absolute bottom-0 right-90 max-h-[40vh]"
+            className="absolute bottom-0 right-80 max-h-[40vh] xl:right-90"
           />
           <img
             src={photo5}
             alt=" Photo 1"
-            className=" absolute bottom-0 right-50 max-h-[51vh] "
+            className=" absolute bottom-0 right-45 max-h-[51vh] xl:right-50"
           />
           <img
             src={photo6}

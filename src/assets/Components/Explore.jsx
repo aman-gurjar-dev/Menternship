@@ -16,12 +16,15 @@ const Explore = () => {
           <img
             src={MyImage}
             alt=" LOGO "
-            className=" max-w-[9vw] ml-15 mt-4 inline "
+            className=" lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 inline w-20"
           />
-          <ul class=" ml-[12vw] mt-[5vh] w-auto list-none inline relative z-10">
+          <ul class=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-10">
             <li class="inline-block mx-[3vw]">
               {" "}
-              <NavLink to="/" className="  hover:text-xl hover:font-bold">
+              <NavLink
+                to="/"
+                className="font-bold  hover:text-xl hover:font-bold"
+              >
                 Home
               </NavLink>
             </li>
@@ -33,7 +36,7 @@ const Explore = () => {
             <li class="inline-block mx-[3vw] ">
               <NavLink
                 to="/Contact"
-                className=" hover:text-xl active:font-bold "
+                className="hover:text-xl active:font-bold "
               >
                 Contact
               </NavLink>
@@ -41,9 +44,9 @@ const Explore = () => {
           </ul>
         </div>
 
-        <div className=" flex justify-evenly mt-10 relative z-10">
-          <span className=" flex flex-col">
-            <img src={Web_dev} alt=" Web dev" />
+        <div className=" flex flex-col justify-evenly sm:flex-row w-60 sm:w-auto mt-10 relative z-10">
+          <span className=" flex flex-col ">
+            <img src={Web_dev} alt=" Web dev" className=" w-50 lg:w-[25vw]" />
             <NavLink
               to="/Explore_web"
               className=" p-2 px-7 rounded-3xl bg-[#e3a7eb17] text-center mt-5"
@@ -52,7 +55,7 @@ const Explore = () => {
             </NavLink>
           </span>
           <span className=" flex flex-col">
-            <img src={ai} alt=" Web dev" />
+            <img src={ai} alt=" Web dev" className=" w-50 lg:w-[25vw]" />
             <NavLink
               to="/Explore_ai"
               className=" p-2 px-7 rounded-3xl bg-[#e3a7eb17] text-center mt-5 "
@@ -61,20 +64,22 @@ const Explore = () => {
             </NavLink>
           </span>
           <span className=" flex flex-col">
-            <img src={ds} alt=" Web dev" />
+            <img src={ds} alt=" Web dev" className=" w-[17vw]" />
             <NavLink
               to="/Explore_ds"
-              className=" p-2 px-7 rounded-3xl bg-[#e3a7eb17] text-center mt-5"
+              className=" p-2 px-[5vw] rounded-3xl bg-[#e3a7eb17] text-center mt-5"
             >
               {"Explore More"}
             </NavLink>
           </span>
         </div>
-        <span className=" absolute top-7 right-10 rounded-full bg-[#1a171e7b] w-[25vw] h-[15vh]  text-center font-semibold text-3xl text-[#FFFFFF] z-10  p-2 m-auto ">
-          Menternship{" "}
-          <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
-          Opportunity
-        </span>
+        <div className="invisible md:visible">
+          <span className=" absolute top-7 right-10 rounded-full bg-[#1a171e7b] w-[25vw] lg:h-[15vh] h-[10vh] text-center  font-semibold lg:text-xl xl:text-3xl  text-[#FFFFFF] z-10  p-2 m-auto ">
+            Menternship{" "}
+            <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
+            Opportunity
+          </span>
+        </div>
         <footer className=" absolute bottom-0 bg-[#5f307b14] w-[100vw] text-center p-5 text-xl font-semibold ">
           © 2025 MENTERNSHIP. All rights reserved.
         </footer>
