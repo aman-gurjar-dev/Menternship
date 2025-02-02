@@ -4,6 +4,7 @@ import Contact_us from "./assets/Components/Contact_us";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Explore from "./assets/Components/Explore";
 import Explore_now from "./assets/Components/Explore_now";
+import Background from "./assets/Components/Background";
 
 const router = createBrowserRouter([
   {

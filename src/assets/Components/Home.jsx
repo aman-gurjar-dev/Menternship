@@ -16,35 +16,35 @@ const Home = () => {
           <img
             src={MyImage}
             alt=" LOGO "
-            className=" max-w-35 ml-15 mt-4 inline "
+            className=" max-w-[9vw] ml-15 mt-4 inline "
           />
-          <ul class=" ml-70 mt-5 w-auto list-none inline relative z-10">
-            <li class="inline-block mx-9">
+          <ul class=" ml-[12vw] mt-[5vh] w-auto list-none inline relative z-10">
+            <li class="inline-block mx-[3vw]">
               {" "}
               <NavLink
                 to="/"
-                className=" font-bold hover:text-xl active:font-bold "
+                className="font-bold   hover:text-xl hover:font-bold"
               >
                 Home
               </NavLink>
             </li>
-            <li class="inline-block mx-9">
-              <NavLink to="/About" className="  hover:text-xl active:font-bold">
+            <li class="inline-block mx-[3vw]">
+              <NavLink to="/About" className="hover:text-xl hover:font-bold">
                 About
               </NavLink>
             </li>
-            <li class="inline-block mx-9 ">
+            <li class="inline-block mx-[3vw] ">
               <NavLink
                 to="/Contact"
-                className=" hover:text-xl active:font-bold"
+                className="hover:text-xl active:font-bold "
               >
                 Contact
               </NavLink>
             </li>
           </ul>
         </div>
-        <div className="mt-25 relative z-10">
-          <div className="mt-14 ml-50">
+        <div className="mt-[12vh] relative z-10">
+          <div className="mt-[7vh] ml-[14vw]">
             <h1 className="text-5xl font-bold">Guiding Ambitions,</h1>
             <h1 className="text-5xl font-bold">
               Building <p className=" text-[#3759D3] inline">Careers</p>
@@ -54,8 +54,8 @@ const Home = () => {
             </h1>
           </div>
 
-          <div className=" mt-10 ml-50">
-            <span className=" mb-5 ">
+          <div className=" mt-[6vh] ml-[14vw]">
+            <span className=" mb-[1vh] ">
               <NavLink
                 to="/StartNow"
                 className="bg-[#477CD6] p-1 px-16 rounded-3xl mr-5 mb-5 font-bold"
@@ -81,36 +81,36 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className=" absolute right-0 top-0 min-h-full z-10">
+        <div className=" absolute right-0 top-0 min-h-full z-10 ">
           <img
             src={photo1}
             alt=" Photo 1"
-            className="absolute top-10 right-90 max-w-32"
+            className="max-h-[54vh] relative top-[3vh] right-90"
           />
           <img
             src={photo2}
             alt=" Photo 1"
-            className=" absolute top-0 right-50 max-w-32"
+            className=" absolute -top-0 right-50 max-h-[53vh]"
           />
           <img
             src={photo3}
             alt=" Photo 1"
-            className=" absolute top-10 max-w-32 right-10"
+            className=" absolute top-[5vh] max-h-[54vh] right-10"
           />
           <img
             src={photo4}
             alt=" Photo 1"
-            className="absolute bottom-0 right-90 max-w-32"
+            className="absolute bottom-0 right-90 max-h-[40vh]"
           />
           <img
             src={photo5}
             alt=" Photo 1"
-            className=" absolute bottom-0 right-50 max-w-32 "
+            className=" absolute bottom-0 right-50 max-h-[51vh] "
           />
           <img
             src={photo6}
             alt=" Photo 1"
-            className=" absolute bottom-0 max-w-32 right-10"
+            className=" absolute bottom-0 max-h-[38vh] right-10"
           />
         </div>
 

@@ -12,24 +12,24 @@ const Explore_now = () => {
           <img
             src={MyImage}
             alt=" LOGO "
-            className=" max-w-35 ml-15 mt-4 inline "
+            className=" max-w-[9vw] ml-15 mt-4 inline "
           />
-          <ul class=" ml-70 mt-5 w-auto list-none inline relative z-10">
-            <li class="inline-block mx-9">
+          <ul class=" ml-[12vw] mt-[5vh] w-auto list-none inline relative z-10">
+            <li class="inline-block mx-[3vw]">
               {" "}
-              <NavLink to="/" className=" hover:text-xl active:font-bold ">
+              <NavLink to="/" className="  hover:text-xl hover:font-bold">
                 Home
               </NavLink>
             </li>
-            <li class="inline-block mx-9">
-              <NavLink to="/About" className="  hover:text-xl active:font-bold">
+            <li class="inline-block mx-[3vw]">
+              <NavLink to="/About" className="hover:text-xl hover:font-bold">
                 About
               </NavLink>
             </li>
-            <li class="inline-block mx-9 ">
+            <li class="inline-block mx-[3vw] ">
               <NavLink
                 to="/Contact"
-                className=" hover:text-xl active:font-bold"
+                className=" hover:text-xl active:font-bold "
               >
                 Contact
               </NavLink>
