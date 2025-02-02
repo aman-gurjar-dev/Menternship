@@ -19,14 +19,14 @@ const Chat = () => {
 
         <div className=" w-[85vw] h-[70vh] bg-[#55566725] m-auto">
           <div className=" flex justify-center">
-            <ul className=" flex items-center justify-around w-[49vw] h-[8vh] rounded-4xl relative bottom-[4vh] bg-[#CEC8C884] text-black font-semibold ">
-              <li className=" hover:bg-black p-[2.5vh] px-[5vw] rounded-4xl hover:text-white">
+            <ul className=" flex items-center justify-around w-[70%] h-10 rounded-4xl relative bottom-[4vh] bg-[#CEC8C884] text-black font-semibold ">
+              <li className=" hover:bg-black p-3 sm:px-5 rounded-4xl text-sm  hover:text-white">
                 <NavLink className="">Announcement</NavLink>
               </li>
-              <li className=" hover:bg-black p-[2.5vh] px-[5vw] rounded-4xl hover:text-white">
+              <li className=" hover:bg-black p-3 sm:px-6 rounded-4xl text-sm  hover:text-white">
                 <NavLink>1:1 Mentorship</NavLink>
               </li>
-              <li className=" hover:bg-black p-[2.5vh] px-[5vw] rounded-4xl hover:text-white">
+              <li className=" hover:bg-black p-3 sm:px-5 rounded-4xl text-sm  hover:text-white">
                 <NavLink>Chat Bot</NavLink>
               </li>
             </ul>

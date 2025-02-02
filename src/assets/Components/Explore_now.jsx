@@ -6,17 +6,21 @@ import { NavLink } from "react-router-dom";
 const Explore_now = () => {
   return (
     <>
-      <div className="h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
+      <div className="min-h-screen sm:h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
+        {/* Navbar */}
         <div className=" mt-2">
           <img
             src={MyImage}
             alt=" LOGO "
-            className=" max-w-[9vw] ml-15 mt-4 inline "
+            className=" lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 inline w-20"
           />
-          <ul class=" ml-[12vw] mt-[5vh] w-auto list-none inline relative z-10">
+          <ul class=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-10">
             <li class="inline-block mx-[3vw]">
               {" "}
-              <NavLink to="/" className="  hover:text-xl hover:font-bold">
+              <NavLink
+                to="/"
+                className=" hover:text-xl hover:font-bold"
+              >
                 Home
               </NavLink>
             </li>
@@ -28,24 +32,24 @@ const Explore_now = () => {
             <li class="inline-block mx-[3vw] ">
               <NavLink
                 to="/Contact"
-                className=" hover:text-xl active:font-bold "
+                className="hover:text-xl active:font-bold "
               >
                 Contact
               </NavLink>
             </li>
           </ul>
         </div>
-
+        {/* Content */}
         <div className="flex justify-center mt-[10vh] ">
-          <div className=" w-[80vw] h-[50vh] bg-[#be75bf13] shadow rounded-xl">
+          <div className=" w-[80vw] md:h-[50vh] h-auto bg-[#be75bf13] shadow rounded-xl">
             <h1 className="text-center text-xl font-bold mt-4">
               Web Development
             </h1>
 
-            <h1 className="text-3xl font-semibold mt-[5vh] ml-[5vw] ">
+            <h1 className="md:text-2xl lg:text-3xl text-xl font-semibold mt-[5vh] ml-[5vw] ">
               What We Provide:
             </h1>
-            <ul className="ml-[5vw] mt-[2vh] text-xl">
+            <ul className="ml-[5vw] mt-[2vh] lg:text-xl text-sm">
               <li>
                 <h1 className="text-[#9755B8] inline">
                   1:1 Mentorship Support :
@@ -71,20 +75,24 @@ const Explore_now = () => {
             <div className=" flex justify-center items-center">
               <NavLink
                 to="/Chat_now"
-                className="bg-[#e3a7eb4c] py-2   rounded-4xl text-xl font-semibold mt-[6vh] px-[10vw]"
+                className="bg-[#e3a7eb4c] py-2   rounded-4xl text-xl font-semibold sm:mt-[6vh] my-20 px-[10vw]"
               >
                 Join us now
               </NavLink>
             </div>
           </div>
         </div>
+        {/* Menternship means oportunity */}
+        <div className="invisible md:visible">
+          <span className=" absolute top-4 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-12   lg:px-15 md:text-sm xl:text-xl text-center  font-semibold lg:text-xl text-[#FFFFFF] z-10  p-2 m-auto ">
+            Menternship{" "}
+            <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
+            Opportunity
+          </span>
+        </div>
 
-        <span className=" absolute top-7 right-10 rounded-full bg-[#1a171e7b] w-[25vw] h-[15vh]  text-center font-semibold text-3xl text-[#FFFFFF] z-10  p-2 m-auto ">
-          Menternship{" "}
-          <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
-          Opportunity
-        </span>
-        <footer className=" absolute bottom-0 bg-[#5f307b14] w-[100vw] text-center p-5 text-xl font-semibold ">
+        {/* footer  */}
+        <footer className=" absolute bottom-0 bg-[#5f307b14] w-[100vw] text-center p-5  font-semibold text-sm ">
           © 2025 MENTERNSHIP. All rights reserved.
         </footer>
 
