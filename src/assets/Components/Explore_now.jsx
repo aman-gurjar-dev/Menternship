@@ -1,7 +1,6 @@
 import React from "react";
 import MyImage from "../Images/logo.png";
 import effect from "../Images/Ellipse 1.png";
-
 import { NavLink } from "react-router-dom";
 
 const Explore_now = () => {
@@ -70,8 +69,11 @@ const Explore_now = () => {
             </ul>
 
             <div className=" flex justify-center items-center">
-              <NavLink className="bg-[#e3a7eb4c] py-2   rounded-4xl text-xl font-semibold mt-[6vh] px-[10vw]">
-                {"Join us now"}
+              <NavLink
+                to="/Chat_now"
+                className="bg-[#e3a7eb4c] py-2   rounded-4xl text-xl font-semibold mt-[6vh] px-[10vw]"
+              >
+                Join us now
               </NavLink>
             </div>
           </div>

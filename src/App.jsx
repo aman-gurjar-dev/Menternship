@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Explore from "./assets/Components/Explore";
 import Explore_now from "./assets/Components/Explore_now";
 import Background from "./assets/Components/Background";
+import Chat from "./assets/Components/Chat";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/Contact",
     element: <Contact_us />,
+  },
+  {
+    path: "/Chat_now",
+    element: <Chat />,
   },
 ]);
 function App() {
