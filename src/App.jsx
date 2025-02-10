@@ -6,6 +6,9 @@ import Explore from "./assets/Components/Explore";
 import Explore_now from "./assets/Components/Explore_now";
 // import Background from "./assets/Components/Background";
 import Chat from "./assets/Components/Chat";
+import Register from "./assets/Components/Authentication/Register";
+import Login from "./assets/Components/Authentication/Login";
+import OTP from "./assets/Components/Authentication/OTP";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,18 @@ const router = createBrowserRouter([
     path: "/Chat_now",
     element: <Chat />,
   },
+  {
+    path: "/Register",
+    element: <Register />,
+  },
+  {
+    path: "/Login",
+    element: <Login />,
+  },
+  {
+    path:"/OTP",
+    element:<OTP/>
+  }
 ]);
 function App() {
   return <RouterProvider router={router} />;

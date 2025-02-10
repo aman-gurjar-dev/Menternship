@@ -14,22 +14,19 @@ const Explore_now = () => {
             alt=" LOGO "
             className=" lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 inline w-20"
           />
-          <ul class=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-10">
-            <li class="inline-block mx-[3vw]">
+          <ul className=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-10">
+            <li className="inline-block mx-[3vw]">
               {" "}
-              <NavLink
-                to="/"
-                className=" hover:text-xl hover:font-bold"
-              >
+              <NavLink to="/" className=" hover:text-xl hover:font-bold">
                 Home
               </NavLink>
             </li>
-            <li class="inline-block mx-[3vw]">
+            <li className="inline-block mx-[3vw]">
               <NavLink to="/About" className="hover:text-xl hover:font-bold">
                 About
               </NavLink>
             </li>
-            <li class="inline-block mx-[3vw] ">
+            <li className="inline-block mx-[3vw] ">
               <NavLink
                 to="/Contact"
                 className="hover:text-xl active:font-bold "
@@ -75,14 +72,14 @@ const Explore_now = () => {
             <div className=" flex justify-center items-center">
               <NavLink
                 to="/Chat_now"
-                className="bg-[#e3a7eb4c] py-2   rounded-4xl text-xl font-semibold sm:mt-[6vh] my-20 px-[10vw]"
+                className="bg-[#e3a7eb4c] py-2 rounded-4xl text-xl font-semibold sm:mt-[6vh] my-20 px-[10vw] cursor-pointer relative z-20"
               >
                 Join us now
               </NavLink>
             </div>
           </div>
         </div>
-        {/* Menternship means oportunity */}
+        {/* Menternship means opportunity */}
         <div className="invisible md:visible">
           <span className=" absolute top-4 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-12   lg:px-15 md:text-sm xl:text-xl text-center  font-semibold lg:text-xl text-[#FFFFFF] z-10  p-2 m-auto ">
             Menternship{" "}
