@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-full h-screen bg-[#1A171E] flex justify-center items-center relative overflow-hidden">
+      <div className="w-full h-screen  flex justify-center items-center relative z-10 overflow-hidden">
         <div className="w-full sm:w-[90%] md:w-[60%] lg:w-[40%] xl:w-[30%] h-auto flex flex-col bg-transparent border-2 border-violet-200 rounded-2xl items-center space-y-6 sm:space-y-5 p-5 relative z-10">
           <img
             src={MyImage}
@@ -95,18 +95,6 @@ const Login = () => {
         </div>
 
         {/* Background effect images */}
-        <div className="absolute bottom-0 left-0 z-0 w-full h-full">
-          <img
-            src={effect}
-            alt="Effect"
-            className="absolute max-w-4xl -bottom-96 -left-96 sm:-left-90 z-0"
-          />
-          <img
-            src={effect}
-            alt="Effect"
-            className="absolute max-w-5xl -bottom-96 -right-96 sm:-right-90 z-0"
-          />
-        </div>
       </div>
     </>
   );

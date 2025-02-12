@@ -6,43 +6,13 @@ import photo3 from "../../Images/Rectangle 6.png";
 import photo4 from "../../Images/Rectangle 5.png";
 import photo5 from "../../Images/Rectangle 3.png";
 import photo6 from "../../Images/Rectangle 7.png";
-import effect from "../../Images/Ellipse 1.png";
+// import effect from "../../Images/Ellipse 1.png";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
-      <header className="mt-2 flex items-center">
-        <img
-          src={MyImage}
-          alt="LOGO"
-          className="lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 w-20"
-        />
-        <nav className="sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto relative z-10">
-          <ul className="list-none inline">
-            <li className="inline-block mx-[3vw]">
-              <NavLink
-                to="/"
-                className="font-bold hover:text-xl hover:font-bold"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="inline-block mx-[3vw]">
-              <NavLink to="/About" className="hover:text-xl hover:font-bold">
-                About
-              </NavLink>
-            </li>
-            <li className="inline-block mx-[3vw]">
-              <NavLink to="/Contact" className="hover:text-xl active:font-bold">
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <main className="sm:mt-[15vh] mt-10 relative z-10">
+    <div className=" ml-5">
+      <main className=" relative z-10 ">
         <section className="mt-[7vh] sm:ml-[10vw] ml-3">
           <h1 className="text-2xl sm:text-5xl font-bold">Guiding Ambitions,</h1>
           <h1 className="text-2xl sm:text-5xl font-bold">
@@ -111,15 +81,6 @@ const Home = () => {
           className="absolute bottom-0 max-h-[38vh] right-10"
         />
       </aside>
-
-      <div className="absolute max-w-4xl -bottom-96 -left-90 z-0">
-        <img src={effect} alt="Effect" />
-        <img
-          src={effect}
-          alt="Effect"
-          className="max-w-5xl -bottom-96 -right-90"
-        />
-      </div>
     </div>
   );
 };

@@ -11,27 +11,52 @@ import Login from "./assets/Components/Authentication/Login";
 import OTP from "./assets/Components/Authentication/OTP";
 import ForgotPassword from "./assets/Components/Authentication/ForgotPassword";
 import Profile from "./assets/Components/Profile/Profile";
+import effect from "./assets/Images/Ellipse 1.png";
+import { Navbar } from "./assets/Components/Navigation/Navbar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Profile />,
+    element: (
+      <>
+        <Navbar />,
+        <Home />
+      </>
+    ),
   },
   {
     path: "/Explore_more",
-    element: <Explore />,
+    element: (
+      <>
+        <Navbar />,
+        <Explore />,
+      </>
+    ),
   },
   {
     path: "/Explore_web",
-    element: <Explore_now />,
+    element: (
+      <>
+        <Navbar />
+        <Explore_now />,
+      </>
+    ),
   },
   {
     path: "/About",
-    element: <About_page />,
+    element: (
+      <>
+        <Navbar />,<About_page />,
+      </>
+    ),
   },
   {
     path: "/Contact",
-    element: <Contact_us />,
+    element: (
+      <>
+        <Navbar />, <Contact_us />,
+      </>
+    ),
   },
   {
     path: "/Chat_now",
@@ -55,7 +80,25 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <div className="h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
+        <RouterProvider router={router} />;
+        <div className="">
+          <img
+            src={effect}
+            alt="Effect"
+            className="absolute max-w-4xl -bottom-96 -left-90 z-0"
+          />
+          <img
+            src={effect}
+            alt="Effect"
+            className="absolute max-w-5xl -bottom-96 -right-90 z-0"
+          />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default App;

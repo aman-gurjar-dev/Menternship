@@ -29,7 +29,7 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-[#1A171E] flex justify-center items-center relative overflow-hidden px-4">
+    <div className="w-full h-screen  flex justify-center items-center relative z-10 overflow-hidden px-4">
       <div className="w-full max-w-lg h-auto max-h-[90%] bg-transparent border-2 border-violet-200 rounded-2xl p-6 flex flex-col items-center relative z-10 overflow-y-auto">
         <img src={MyImage} alt="LOGO" className="w-24" />
 
@@ -38,7 +38,7 @@ const Register = () => {
         </h1>
 
         <form onSubmit={handleSubmit}>
-          <div className="flex flex-col space-y-4 items-center w-full px-4">
+          <div className="flex flex-col space-y-4 text-black items-center w-full px-4">
             <input
               type="text"
               onChange={(e) => setName(e.target.value)}
@@ -94,19 +94,6 @@ const Register = () => {
             </NavLink>
           </h1>
         </form>
-      </div>
-
-      <div className="absolute bottom-0 left-0 z-0 w-full h-full">
-        <img
-          src={effect}
-          alt="Effect"
-          className="absolute max-w-4xl -bottom-96 -left-96"
-        />
-        <img
-          src={effect}
-          alt="Effect"
-          className="absolute max-w-5xl -bottom-96 -right-96"
-        />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 // Chat component
 const Chat = () => {
   return (
-    <div className="h-screen bg-[#1A171E] text-white relative overflow-hidden flex flex-col">
+    <div className="h-screen relative z-1  text-white  overflow-hidden flex flex-col">
       {/* Header section */}
       <div className="flex justify-between items-center mt-2 px-4">
         <img src={MyImage} alt="LOGO" className="max-w-[9vw] mt-4" />
@@ -51,11 +51,6 @@ const Chat = () => {
         <button className="bg-[#477CD6] px-10 rounded-tr-2xl rounded-br-2xl text-white ">
           Send
         </button>
-      </div>
-      {/* Decorative effects */}
-      <div className="absolute inset-x-0 bottom-0 flex justify-between items-center">
-        <img src={effect} alt="Effect" className="w-1/3 max-w-md" />
-        <img src={effect} alt="Effect" className="w-1/3 max-w-md" />
       </div>
     </div>
   );
