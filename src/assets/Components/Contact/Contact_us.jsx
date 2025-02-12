@@ -1,9 +1,9 @@
 import React from "react";
-import MyImage from "../Images/logo.png";
-import effect from "../Images/Ellipse 1.png";
-import phone from "../Images/Phone Ringing.png";
-import location from "../Images/Location Pin.png";
-import mail from "../Images/mail.png";
+import MyImage from "../../Images/logo.png";
+import effect from "../../Images/Ellipse 1.png";
+import phone from "../../Images/Phone Ringing.png";
+import location from "../../Images/Location Pin.png";
+import mail from "../../Images/mail.png";
 import { NavLink } from "react-router-dom";
 
 const Contact_us = () => {

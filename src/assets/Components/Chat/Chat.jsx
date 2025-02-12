@@ -1,8 +1,8 @@
 import React from "react";
-import MyImage from "../Images/logo.png";
-import effect from "../Images/Ellipse 1.png";
-import chatus from "../Images/logo_website-removebg-preview 4.png";
-import userlogo from "../Images/face-Photoroom (1) 1.png";
+import MyImage from "../../Images/logo.png";
+import effect from "../../Images/Ellipse 1.png";
+import chatus from "../../Images/logo_website-removebg-preview 4.png";
+import userlogo from "../../Images/face-Photoroom (1) 1.png";
 import { NavLink } from "react-router-dom";
 
 // Chat component

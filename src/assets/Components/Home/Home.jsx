@@ -1,12 +1,12 @@
 import React from "react";
-import MyImage from "../Images/logo.png";
-import photo1 from "../Images/Rectangle 4.png";
-import photo2 from "../Images/Rectangle 2.png";
-import photo3 from "../Images/Rectangle 6.png";
-import photo4 from "../Images/Rectangle 5.png";
-import photo5 from "../Images/Rectangle 3.png";
-import photo6 from "../Images/Rectangle 7.png";
-import effect from "../Images/Ellipse 1.png";
+import MyImage from "../../Images/logo.png";
+import photo1 from "../../Images/Rectangle 4.png";
+import photo2 from "../../Images/Rectangle 2.png";
+import photo3 from "../../Images/Rectangle 6.png";
+import photo4 from "../../Images/Rectangle 5.png";
+import photo5 from "../../Images/Rectangle 3.png";
+import photo6 from "../../Images/Rectangle 7.png";
+import effect from "../../Images/Ellipse 1.png";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {

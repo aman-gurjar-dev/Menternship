@@ -1,6 +1,6 @@
 import React from "react";
-import MyImage from "../Images/logo.png";
-import effect from "../Images/Ellipse 1.png";
+import MyImage from "../../Images/logo.png";
+import effect from "../../Images/Ellipse 1.png";
 import { NavLink } from "react-router-dom";
 
 const Explore_now = () => {

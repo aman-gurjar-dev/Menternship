@@ -1,7 +1,7 @@
 import React from "react";
-import MyImage from "../Images/logo.png"; // Importing the logo image
-import effect from "../Images/Ellipse 1.png"; // Importing the effect image
-import sideImage from "../Images/WhatsApp_Image_2025-01-24_at_22.07.39_b8dce0b9-removebg-preview 1.png"; // Importing the side image
+import MyImage from "../../Images/logo.png"; // Importing the logo image
+import effect from "../../Images/Ellipse 1.png"; // Importing the effect image
+import sideImage from "../../Images/WhatsApp_Image_2025-01-24_at_22.07.39_b8dce0b9-removebg-preview 1.png"; // Importing the side image
 import { NavLink } from "react-router-dom"; // Importing NavLink component from react-router-dom for navigation
 
 const About_page = () => {
