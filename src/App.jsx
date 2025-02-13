@@ -1,10 +1,9 @@
 import Home from "./assets/Components/Home/Home";
 import About_page from "./assets/Components/About/About_page";
 import Contact_us from "./assets/Components/Contact/Contact_us";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Explore from "./assets/Components/Explore/Explore";
 import Explore_now from "./assets/Components/Explore/Explore_now";
-// import Background from "./assets/Components/Background";
 import Chat from "./assets/Components/Chat/Chat";
 import Register from "./assets/Components/Authentication/Register";
 import Login from "./assets/Components/Authentication/Login";
@@ -14,12 +13,12 @@ import Profile from "./assets/Components/Profile/Profile";
 import effect from "./assets/Images/Ellipse 1.png";
 import { Navbar } from "./assets/Components/Navigation/Navbar";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (
       <>
-        <Navbar />,
+        <Navbar />
         <Home />
       </>
     ),
@@ -28,8 +27,8 @@ const router = createBrowserRouter([
     path: "/Explore_more",
     element: (
       <>
-        <Navbar />,
-        <Explore />,
+        <Navbar />
+        <Explore />
       </>
     ),
   },
@@ -38,7 +37,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Navbar />
-        <Explore_now />,
+        <Explore_now />
       </>
     ),
   },
@@ -46,7 +45,8 @@ const router = createBrowserRouter([
     path: "/About",
     element: (
       <>
-        <Navbar />,<About_page />,
+        <Navbar />
+        <About_page />
       </>
     ),
   },
@@ -54,7 +54,8 @@ const router = createBrowserRouter([
     path: "/Contact",
     element: (
       <>
-        <Navbar />, <Contact_us />,
+        <Navbar />
+        <Contact_us />
       </>
     ),
   },
@@ -79,25 +80,24 @@ const router = createBrowserRouter([
     element: <ForgotPassword />,
   },
 ]);
+
 function App() {
   return (
-    <>
-      <div className="h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
-        <RouterProvider router={router} />;
-        <div className="">
-          <img
-            src={effect}
-            alt="Effect"
-            className="absolute max-w-4xl -bottom-96 -left-90 z-0"
-          />
-          <img
-            src={effect}
-            alt="Effect"
-            className="absolute max-w-5xl -bottom-96 -right-90 z-0"
-          />
-        </div>
+    <div className="h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
+      <RouterProvider router={router} />
+      <div>
+        <img
+          src={effect}
+          alt="Effect"
+          className="absolute max-w-4xl -bottom-96 -left-90 z-0"
+        />
+        <img
+          src={effect}
+          alt="Effect"
+          className="absolute max-w-5xl -bottom-96 -right-90 z-0"
+        />
       </div>
-    </>
+    </div>
   );
 }
 
