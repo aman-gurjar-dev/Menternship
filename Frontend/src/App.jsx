@@ -15,12 +15,11 @@ import { Navbar } from "./assets/Components/Navigation/Navbar";
 import ProtectedRoute from "./utils/ProtectedRoute"; // ✅ Import the Protected Route
 import UserDashboard from "./assets/Components/Dashboard/UserDashboard"
 import Resources from "./assets/Components/Resource/Resource";
-import YtResource from "./assets/Components/Resource/ytResource";
+import YtResource from "./assets/Components/Resource/YtResource";
 import LearningResource from "./assets/Components/Resource/LearningResource";
 import EbookResource from "./assets/Components/Resource/EbookResource";
 import PdfResource from "./assets/Components/Resource/PdfResource";
 import RoadmapResource from "./assets/Components/Resource/RoadmapResource";
-import RoadmapResources from "./assets/Components/Resource/RoadmapResource";
 import Goals from "./assets/Components/Goals/Goals";
 import ExploreMentor from "./assets/Components/ExploreMentor/ExploreMentor";
 import Mymentor from "./assets/Components/Mentor/Mymentor";
@@ -205,7 +204,7 @@ const router = createHashRouter([
   },
   {
     path: "/learningResources/roadmap/:topic",
-    element: <RoadmapResources />,
+    element: <RoadmapResource />,
   },
   {
     path: "/mentor-dashboard/messages",
