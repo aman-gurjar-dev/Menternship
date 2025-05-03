@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Viewer } from "@react-pdf-viewer/core";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
@@ -7,8 +7,8 @@ import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { GlobalWorkerOptions } from "pdfjs-dist/build/pdf";
 import { RiMoonClearLine } from "react-icons/ri";
 
-// Set correct worker source
-GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`;
+// Set correct worker source for Vercel
+GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
 
 const pdfResources = {
   "web-development": "webDev.pdf",
@@ -23,6 +23,13 @@ const EbookResource = () => {
   const { topic } = useParams();
   const selectedPdf = pdfResources[topic];
   const pdfLayoutPlugin = defaultLayoutPlugin();
+  const [pdfError, setPdfError] = useState(null);
+
+  // Function to handle PDF loading errors
+  const handlePdfError = (error) => {
+    console.error('PDF Error:', error);
+    setPdfError(error.message || 'Failed to load PDF');
+  };
 
   if (!selectedPdf) {
     return (
@@ -33,6 +40,21 @@ const EbookResource = () => {
           </h2>
           <p className="text-gray-300">
             The requested ebook for "{topic.replace("-", " ")}" is not available.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (pdfError) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-900">
+        <div className="text-center p-6 bg-gray-800 rounded-lg border border-red-500 max-w-md">
+          <h2 className="text-2xl font-bold text-red-400 mb-2">
+            Error Loading PDF
+          </h2>
+          <p className="text-gray-300">
+            {pdfError}
           </p>
         </div>
       </div>
@@ -59,8 +81,9 @@ const EbookResource = () => {
         {/* PDF Viewer Container */}
         <div className="w-full h-[80vh] rounded-xl overflow-hidden border border-gray-700 bg-gray-800 shadow-xl">
           <Viewer 
-            fileUrl={`/Ebook/${selectedPdf}`} 
+            fileUrl={`${process.env.PUBLIC_URL || ''}/Ebook/${selectedPdf}`}
             plugins={[pdfLayoutPlugin]}
+            onError={handlePdfError}
             theme={{
               theme: 'dark',
               colors: {
