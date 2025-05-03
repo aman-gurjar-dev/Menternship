@@ -57,9 +57,9 @@ const Login = () => {
     <div className="w-full h-screen flex justify-center items-center text-black">
       <div className="w-full sm:w-[90%] md:w-[60%] lg:w-[40%] xl:w-[30%] h-auto flex flex-col bg-transparent border-2 border-violet-200 rounded-2xl items-center p-5 text-black">
         <form onSubmit={handleSubmit} className="w-full">
-          <h1 className="text-center text-3xl font-bold text-white pb-3">
-            Login Now
-          </h1>
+        <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-500 pb-2 via-purple-500 to-pink-500 pb-2 bg-clip-text text-transparent">
+          Login Now
+        </h1>
 
           {loginError && <p className="text-red-500 text-center">{loginError}</p>}
 
@@ -98,7 +98,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="bg-[#477CD6] text-xl py-2 px-10 rounded-4xl text-center w-full cursor-pointer"
+              className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-xl py-2 px-10 rounded-4xl text-center w-full cursor-pointer"
             >
               Login
             </button>
