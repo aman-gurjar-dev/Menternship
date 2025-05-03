@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../../utils/config";
 import { FaUserCircle } from "react-icons/fa";
 
 const ProfileLeft = ({ active, setActive }) => {
@@ -13,7 +14,7 @@ const ProfileLeft = ({ active, setActive }) => {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const res = await axios.get("http://127.0.0.1:3000/Profile", {
+        const res = await axios.get(`${config.backendUrl}/Profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

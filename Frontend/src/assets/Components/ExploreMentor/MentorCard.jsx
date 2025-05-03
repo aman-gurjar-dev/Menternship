@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import config from "../../utils/config";
 import {
   FiMessageSquare,
   FiUserPlus,
@@ -39,7 +40,7 @@ const MentorCard = ({ mentor }) => {
 
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/api/followedMentors",
+        `${config.backendUrl}/api/mentors/${mentor._id}/followers`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -69,7 +70,7 @@ const MentorCard = ({ mentor }) => {
       setLoading(true);
 
       await axios.post(
-        `http://localhost:3000/api/followMentor/${mentor._id}`,
+        `${config.backendUrl}/api/students/${currentUser.id}/follow/${mentor._id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

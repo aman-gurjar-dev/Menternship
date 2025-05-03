@@ -3,6 +3,7 @@ import { FiSend } from "react-icons/fi";
 import { BsRobot } from "react-icons/bs";
 import MyImage from "../../Images/logo.png";
 import axios from "axios";
+import config from "../../utils/config";
 
 const Chat = () => {
   useEffect(() => {
@@ -69,7 +70,7 @@ const Chat = () => {
   
     try {
       const response = await axios.post(
-        API_URL,
+        `${config.backendUrl}/api/messages`,
         { inputs: message },
         { headers }
       );

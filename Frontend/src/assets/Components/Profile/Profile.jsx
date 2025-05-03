@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ProfileLeft from "./ProfileLeft";
 import ProfileRight from "./ProfileRight";
 import axios from "axios";
+import config from "../../utils/config";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Profile = () => {
           return;
         }
 
-        const res = await axios.get("http://127.0.0.1:3000/Profile", {
+        const res = await axios.get(`${config.backendUrl}/Profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
