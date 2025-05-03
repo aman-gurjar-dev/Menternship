@@ -26,7 +26,8 @@ const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
       process.env.FRONTEND_URL?.replace(/\/$/, '') || 'http://localhost:5173',
-      'http://localhost:5173'
+      'http://localhost:5173',
+      'https://menternship-mini-project.vercel.app'
     ];
     if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
       callback(null, true);
@@ -40,6 +41,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
+
+// Add a health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 
 const io = socketIo(server, {
   cors: {
@@ -1634,3 +1641,11 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
+// Add a catch-all route for 404s
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not Found' });
+});
+
+// Export the Express app for Vercel
+module.exports = app;
