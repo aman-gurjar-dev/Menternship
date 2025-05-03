@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Calendar, Clock, Users, BookOpen, MessageSquare, BarChart2, HelpCircle, Bell, Search, Edit } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';
+import config from '../../../utils/config';
 
 const MentorDashboard = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const MentorDashboard = () => {
           return;
         }
   
-        const response = await axios.get('http://localhost:3000/api/mentors/me', {
+        const response = await axios.get(`${config.backendUrl}/api/mentors/me`, {
           headers: { Authorization: `Bearer ${token}` }
         });
   
@@ -122,7 +123,7 @@ const MentorDashboard = () => {
   const handleProfileUpdate = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put('http://localhost:3000/api/mentors/update-profile',
+      const response = await axios.put(`${config.backendUrl}/api/mentors/update-profile`,
       editData, // Add the request body
       {
         headers: { 

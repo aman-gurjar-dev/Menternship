@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import config from "../../utils/config";
 import { FiSend } from "react-icons/fi";
 import { BsCheck2All, BsMoon, BsSun } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
@@ -42,7 +43,7 @@ const ChatPage = () => {
   useEffect(() => {
     const fetchUserTypeAndContacts = async () => {
       try {
-        const userResponse = await axios.get("http://localhost:3000/api/users/me", {
+        const userResponse = await axios.get(`${config.backendUrl}/api/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -51,12 +52,12 @@ const ChatPage = () => {
         setCurrentUserId(_id);
 
         if (userType === "Mentor") {
-          const response = await axios.get("http://localhost:3000/api/mentors/followers", {
+          const response = await axios.get(`${config.backendUrl}/api/mentors/followers`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setContacts(response.data.followers || []);
         } else {
-          const response = await axios.get("http://localhost:3000/api/students/followedMentors", {
+          const response = await axios.get(`${config.backendUrl}/api/students/followedMentors`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setContacts(response.data.followedMentors || []);
@@ -102,7 +103,7 @@ const ChatPage = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/messages/${selectedContact._id}`,
+          `${config.backendUrl}/api/messages/${selectedContact._id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -144,7 +145,7 @@ const ChatPage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/messages/${selectedContact._id}`,
+        `${config.backendUrl}/api/messages`,
         {
           text: newMessage,
           receiver: selectedContact._id,

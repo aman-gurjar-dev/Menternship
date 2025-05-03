@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiUser, FiLoader, FiAlertTriangle, FiUserPlus, FiUserX, FiMessageSquare } from "react-icons/fi";
 import { IoCheckmarkDone, IoWarning } from "react-icons/io5";
 import axios from "axios";
+import config from "../../utils/config";
 
 const MyMentor = () => {
   const [mentors, setMentors] = useState([]);
@@ -25,7 +26,7 @@ const MyMentor = () => {
     }
 
     try {
-      const response = await axios.get("http://localhost:3000/api/followedMentors", {
+      const response = await axios.get(`${config.backendUrl}/api/followedMentors`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -49,7 +50,7 @@ const MyMentor = () => {
     setUnfollowingId(mentorId);
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/unfollowMentor/${mentorId}`,
+        `${config.backendUrl}/api/unfollowMentor/${mentorId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

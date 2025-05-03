@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Lock, Mail } from 'react-feather';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import config from '../../../utils/config';
 // import logo from '../../../assets/images/logo.png'; // Adjust the path as necessary
 
 const MentorLogin = () => {
@@ -18,7 +19,7 @@ const MentorLogin = () => {
     setError('');
   
     try {
-      const response = await axios.post('http://localhost:3000/Login', {
+      const response = await axios.post(`${config.backendUrl}/Login`, {
         email,
         password
       });

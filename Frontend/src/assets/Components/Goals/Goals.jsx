@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../../utils/config";
 import { FiPlus, FiCheck, FiX, FiTrash2, FiSkipForward } from "react-icons/fi";
 import { RiMoonClearLine } from "react-icons/ri";
 
@@ -13,7 +14,7 @@ const Goals = () => {
   useEffect(() => {
     const fetchGoals = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/goals", {
+        const response = await axios.get(`${config.backendUrl}/api/goals`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setGoals(response.data);
@@ -43,7 +44,7 @@ const Goals = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:3000/api/goals", goalData, {
+      const response = await axios.post(`${config.backendUrl}/api/goals`, goalData, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -68,7 +69,7 @@ const Goals = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/goals/${id}`,
+        `${config.backendUrl}/api/goals/${id}`,
         { completedDays, skippedDays },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -87,7 +88,7 @@ const Goals = () => {
 
   const deleteGoal = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/goals/${id}`, {
+      await axios.delete(`${config.backendUrl}/api/goals/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
