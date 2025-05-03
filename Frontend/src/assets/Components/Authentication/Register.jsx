@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
+import config from "../../utils/config";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Register = () => {
         ? "http://localhost:3000/api/mentors/register" 
         : "http://localhost:3000/api/students/register";
 
-      const res = await axios.post(endpoint, formData, {
+      const res = await axios.post(`${config.backendUrl}/register`, formData, {
         headers: { "Content-Type": "application/json" }
       });
 

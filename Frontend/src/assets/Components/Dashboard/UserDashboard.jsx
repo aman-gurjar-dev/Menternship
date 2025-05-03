@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
+import config from "../../utils/config";
 import Header from "./Header";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -35,7 +36,7 @@ const UserDashboard = () => {
           return;
         }
 
-        const res = await axios.get("http://127.0.0.1:3000/profile", {
+        const res = await axios.get(`${config.backendUrl}/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

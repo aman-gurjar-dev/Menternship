@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MentorCard from "./MentorCard";
 import axios from "axios";
+import config from "../../utils/config";
 import { FiSearch, FiLoader, FiAlertCircle, FiUsers, FiFilter } from "react-icons/fi";
 import { RiMoonClearLine } from "react-icons/ri";
 
@@ -17,7 +18,7 @@ const ExploreMentor = () => {
   const fetchFollowedMentors = useCallback(async () => {
     if (!token) return;
     try {
-      const { data } = await axios.get("http://localhost:3000/api/followedMentors", {
+      const { data } = await axios.get(`${config.backendUrl}/api/followedMentors`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (data?.followedMentors) setFollowedMentors(data.followedMentors);
@@ -31,7 +32,7 @@ const ExploreMentor = () => {
   
     const fetchMentors = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/mentors");
+        const response = await axios.get(`${config.backendUrl}/mentors`);
         
         if (!Array.isArray(response.data)) throw new Error("Data is not an array");
   

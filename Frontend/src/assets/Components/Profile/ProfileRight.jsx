@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import config from "../../utils/config";
 
 const ProfileRight = ({ active }) => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const ProfileRight = ({ active }) => {
           return;
         }
 
-        const res = await axios.get("http://127.0.0.1:3000/Profile", {
+        const res = await axios.get(`${config.backendUrl}/Profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -85,7 +86,7 @@ const ProfileRight = ({ active }) => {
       };
 
       const response = await axios.put(
-        "http://127.0.0.1:3000/Profile",
+        `${config.backendUrl}/Profile`,
         updatedData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -109,7 +110,7 @@ const ProfileRight = ({ active }) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        "http://127.0.0.1:3000/changePassword",
+        `${config.backendUrl}/changePassword`,
         {
           currentPassword: passwords.currentPassword,
           newPassword: passwords.newPassword,

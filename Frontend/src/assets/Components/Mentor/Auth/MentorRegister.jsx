@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../../../utils/config';
 
 const MentorRegister = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const MentorRegister = () => {
     setErrors({}); // Clear previous errors
   
     try {
-      const response = await axios.post('http://localhost:3000/api/mentors/register', {
+      const response = await axios.post(`${config.backendUrl}/api/mentors/register`, {
         ...formData,
         yearsOfExperience: parseInt(formData.yearsOfExperience)
       }, {

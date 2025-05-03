@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
+import config from "../../utils/config";
 import Loginvalidation from "./Loginvalidation";
 
 const Login = () => {
@@ -28,11 +29,7 @@ const Login = () => {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      const res = await axios.post(
-        "http://localhost:3000/Login",
-        value,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const res = await axios.post(`${config.backendUrl}/login`, value, { headers: { "Content-Type": "application/json" } });
 
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
