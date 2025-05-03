@@ -46,6 +46,45 @@ const learningResources = [
   },
 ];
 
+const resourceTypes = [
+  {
+    name: "YouTube Videos",
+    icon: "🎥",
+    bgColor: "bg-[#477CD6]",
+    path: "ytResource"
+  },
+  {
+    name: "Ebooks",
+    icon: "📚",
+    bgColor: "bg-[#477CD6]",
+    path: "Ebook"
+  },
+  {
+    name: "PDFs",
+    icon: "📄",
+    bgColor: "bg-[#477CD6]",
+    path: "pdf"
+  },
+  {
+    name: "Roadmaps",
+    icon: "🗺️",
+    bgColor: "bg-[#477CD6]",
+    path: "roadmap"
+  },
+  {
+    name: "Articles",
+    icon: "📝",
+    bgColor: "bg-[#477CD6]",
+    path: "articles"
+  },
+  {
+    name: "Courses",
+    icon: "🎓",
+    bgColor: "bg-[#477CD6]",
+    path: "courses"
+  }
+];
+
 const LearningResource = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -62,7 +101,7 @@ const LearningResource = () => {
   
 
   return (
-    <div className="w-full h-full overflow-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-10">
+    <div className="w-full h-full overflow-auto bg-[#1A171E] p-10">
       <h1 className="text-4xl font-bold text-black text-center mb-10">Explore {mode} Content</h1>
 
       <div className="grid md:grid-cols-3 gap-8 place-items-center relative z-10">
