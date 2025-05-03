@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from '../../utils/config';
 
 const UserHome = () => {
   const [goals, setGoals] = useState([]);
@@ -14,7 +15,7 @@ const UserHome = () => {
         return;
       }
       try {
-        const response = await fetch('http://localhost:3000/api/goals', {
+        const response = await fetch(`${config.backendUrl}/api/goals`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -38,7 +39,7 @@ const UserHome = () => {
         return;
       }
       try {
-        const response = await fetch('http://localhost:3000/api/messages', {
+        const response = await fetch(`${config.backendUrl}/api/messages`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

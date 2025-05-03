@@ -46,11 +46,11 @@ const Register = () => {
 
     try {
       // Determine the registration endpoint based on email domain
-      const endpoint = isMentor 
-        ? "http://localhost:3000/api/mentors/register" 
-        : "http://localhost:3000/api/students/register";
+      const registerUrl = isMentor
+        ? `${config.backendUrl}/api/mentors/register`
+        : `${config.backendUrl}/api/students/register`;
 
-      const res = await axios.post(`${config.backendUrl}/register`, formData, {
+      const res = await axios.post(registerUrl, formData, {
         headers: { "Content-Type": "application/json" }
       });
 
