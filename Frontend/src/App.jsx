@@ -219,20 +219,8 @@ function App() {
   return (
     <html lang="en">
       <body>
-        <div className="h-screen bg-[#1A171E] text-white min-w-screen relative overflow-hidden">
+        <div className="min-h-screen bg-[#1A171E] text-white relative overflow-hidden">
           <RouterProvider router={router} />
-          <div>
-            <img
-              src={effect}
-              alt="Effect"
-              className="absolute max-w-4xl -bottom-96 -left-90 z-0"
-            />
-            <img
-              src={effect}
-              alt="Effect"
-              className="absolute max-w-5xl -bottom-96 -right-90 z-0"
-            />
-          </div>
         </div>
 
         <CopilotKit publicApiKey="ck_pub_386cadf26332be4af7eb573c5163e3cb">
