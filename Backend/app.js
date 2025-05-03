@@ -22,12 +22,25 @@ const app = express();
 const server = http.createServer(app);
 
 // CORS configuration
-app.use(cors({
-  origin: 'https://menternship.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true // if you're using cookies or Authorization headers
-}));
+const corsOptions = {
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      process.env.FRONTEND_URL?.replace(/\/$/, '') || 'https://menternship.vercel.app',
+      'http://localhost:5173',
+      'https://menternship-mini-project.vercel.app'
+    ];
+    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Add a health check endpoint

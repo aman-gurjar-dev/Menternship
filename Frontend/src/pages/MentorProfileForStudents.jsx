@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Star, MessageSquare, BookOpen, Calendar, Award, Clock } from 'react-feather';
 import axios from 'axios';
+import config from '../assets/utils/config';
 import { useParams } from 'react-router-dom';
 // import { useAuth } from '../context/AuthContext'; // Assuming you have an auth context
 
@@ -17,7 +18,7 @@ const MentorProfileForStudents = () => {
     const fetchData = async () => {
       try {
         // Fetch mentor data
-        const mentorRes = await axios.get(`/api/mentors/${mentorId}`, {
+        const mentorRes = await axios.get(`${config.backendUrl}/api/mentors/${mentorId}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`
           }
@@ -25,7 +26,7 @@ const MentorProfileForStudents = () => {
         setMentor(mentorRes.data);
 
         // Check if student is following this mentor
-        const studentRes = await axios.get(`/api/students/${currentUser.id}`, {
+        const studentRes = await axios.get(`${config.backendUrl}/api/students/${currentUser.id}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`
           }
@@ -47,13 +48,13 @@ const MentorProfileForStudents = () => {
   const handleFollowToggle = async () => {
     try {
       if (isFollowing) {
-        await axios.delete(`/api/students/${currentUser.id}/follow/${mentorId}`, {
+        await axios.delete(`${config.backendUrl}/api/students/${currentUser.id}/follow/${mentorId}`, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`
           }
         });
       } else {
-        await axios.post(`/api/students/${currentUser.id}/follow/${mentorId}`, {}, {
+        await axios.post(`${config.backendUrl}/api/students/${currentUser.id}/follow/${mentorId}`, {}, {
           headers: {
             Authorization: `Bearer ${currentUser.token}`
           }
@@ -72,7 +73,7 @@ const MentorProfileForStudents = () => {
     }
 
     try {
-      await axios.post('/api/sessions', {
+      await axios.post(`${config.backendUrl}/api/sessions`, {
         mentorId,
         studentId: currentUser.id,
         date: selectedDate,

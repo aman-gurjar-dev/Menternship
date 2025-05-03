@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 // import { user } from 'react-feather/dist/icons/graduation-cap';
-// import axios from 'axios';
+import axios from 'axios';
+import config from '../assets/utils/config';
 import { useParams } from 'react-router-dom';
 
 const StudentProfileForMentors = ({ mentorId }) => {
@@ -13,7 +14,7 @@ const StudentProfileForMentors = ({ mentorId }) => {
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const res = await axios.get(`/api/students/${studentId}`, {
+        const res = await axios.get(`${config.backendUrl}/api/students/${studentId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -32,7 +33,7 @@ const StudentProfileForMentors = ({ mentorId }) => {
 
   const handleStartSession = async () => {
     try {
-      const response = await axios.post('/api/sessions', {
+      const response = await axios.post(`${config.backendUrl}/api/sessions`, {
         studentId,
         mentorId,
         date: new Date().toISOString()
@@ -51,7 +52,7 @@ const StudentProfileForMentors = ({ mentorId }) => {
   const handleSaveNotes = async () => {
     setIsSaving(true);
     try {
-      await axios.patch(`/api/students/${studentId}/notes`, {
+      await axios.patch(`${config.backendUrl}/api/students/${studentId}/notes`, {
         notes
       }, {
         headers: {
