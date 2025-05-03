@@ -43,7 +43,7 @@ const ProfileLeft = ({ active, setActive }) => {
   };
 
   return (
-    <div className="w-full sm:w-64 p-4 text-black relative z-10 flex flex-col items-center space-y-4">
+    <div className="w-full sm:w-64 p-4 text-white relative z-10 flex flex-col items-center space-y-4">
       {/* ✅ Profile Image Display */}
       <div className="flex flex-col items-center">
         {currentImage ? (
