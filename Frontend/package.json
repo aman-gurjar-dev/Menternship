@@ -1,32 +1,52 @@
 {
-  "name": "mini-project",
+  "homepage": "https://aman-gurjar-dev.github.io/Menternship",
+  "name": "menternship",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --port 8080"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.0.8",
+    "@copilotkit/react-core": "^1.8.4",
+    "@copilotkit/react-ui": "^1.8.4",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@tailwindcss/vite": "^4.0.0",
     "axios": "^1.7.9",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.2.0",
-    "tailwindcss": "^4.0.8"
+    "dayjs": "^1.11.13",
+    "framer-motion": "^12.5.0",
+    "menternship": "file:",
+    "openai": "^4.93.0",
+    "pdfjs-dist": "^3.11.174",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-feather": "^2.0.10",
+    "react-icons": "^5.4.0",
+    "react-pdf": "^9.2.1",
+    "react-router-dom": "^7.1.5",
+    "recoil": "^0.7.7",
+    "require": "^2.4.20",
+    "socket.io-client": "^4.8.1",
+    "tailwindcss": "^4.0.0",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react": "^7.37.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
-    "vite": "^6.1.0"
+    "vite": "^6.0.11"
   }
 }

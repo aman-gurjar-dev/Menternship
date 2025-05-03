@@ -1,1 +1,8 @@
 @import "tailwindcss";
+  
+body, html {
+    overflow: auto !important;
+  }
+  
+  
+    
