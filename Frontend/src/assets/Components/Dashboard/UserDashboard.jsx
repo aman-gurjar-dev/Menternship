@@ -61,19 +61,19 @@ const UserDashboard = () => {
     }
   }, [navigate]);
 
-  const hideHeaderRoutes = ["/UserDashboard/message" , "UserDashboard/explorementor"];
+  const hideHeaderRoutes = [];
   const shouldHideHeader = hideHeaderRoutes.includes(location.pathname);
 
   if (!userData) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+      <div className="min-h-screen flex items-center justify-center text-white bg-gray-800">
         Loading your dashboard...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-gray-900 font-sans relative z-10">
+    <div className="min-h-screen flex flex-col text-white font-sans bg-gray-800">
       {!shouldHideHeader && (
         <Header userData={userData} handleLogout={handleLogout} />
       )}
@@ -90,7 +90,7 @@ const UserDashboard = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5 }}
-          className="flex-1 overflow-y-scroll h-screen ml-0 md:ml-64 border-2 border-black"
+          className="flex-1 overflow-y-scroll h-screen ml-0 md:ml-64 text-white"
         >
           <Outlet context={{ userData }} />
         </motion.div>

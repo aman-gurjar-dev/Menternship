@@ -35,9 +35,9 @@ const Profile = () => {
   }, [navigate]);
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
+    <div className="w-full min-h-screen flex justify-center items-center bg-[#1A171E] p-2 sm:p-4 text-white">
       {/* Profile Box - Responsive */}
-      <div className="flex flex-col md:flex-row bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 w-full md:w-[80%] h-auto md:h-[80vh] rounded-2xl p-5 space-y-5 md:space-y-0 md:space-x-5 shadow-lg overflow-hidden">
+      <div className="flex flex-col md:flex-row bg-[#1A171E] w-full md:w-[80%] h-auto md:h-[80vh] rounded-2xl p-3 sm:p-5 space-y-3 sm:space-y-5 md:space-y-0 md:space-x-5 shadow-lg overflow-hidden">
         
         {/* Left Profile Section (Fixed Size) */}
         <div className="w-full md:w-[30%] h-auto md:h-full border-2 border-black">
