@@ -29,7 +29,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://127.0.0.1:3000/Login",
+        "http://localhost:3000/Login",
         value,
         { headers: { "Content-Type": "application/json" } }
       );

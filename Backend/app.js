@@ -23,7 +23,17 @@ const server = http.createServer(app);
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      process.env.FRONTEND_URL?.replace(/\/$/, '') || 'http://localhost:5173',
+      'http://localhost:5173'
+    ];
+    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -33,7 +43,17 @@ app.use(cors(corsOptions));
 
 const io = socketIo(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        process.env.FRONTEND_URL?.replace(/\/$/, '') || 'http://localhost:5173',
+        'http://localhost:5173'
+      ];
+      if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ["GET", "POST"],
     credentials: true
   },
@@ -44,7 +64,7 @@ io.use(socketMiddleware);
 
 // Start Socket.IO
 io.listen(3001, () => {
-  console.log("Socket.IO server listening on port 3000");
+  console.log("Socket.IO server listening on port 3001");
 });
 
 // ==============================================
@@ -1611,6 +1631,6 @@ app.get("/", (req, res) => {
 // ✅ Server Startup
 // ==============================================
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://127.0.0.1:${PORT}`);
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
