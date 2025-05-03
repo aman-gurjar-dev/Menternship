@@ -21,10 +21,21 @@ const { OpenAI } = require('openai');
 const app = express();
 const server = http.createServer(app);
 
+// CORS configuration
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+
 const io = socketIo(server, {
   cors: {
-    origin: "*",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     methods: ["GET", "POST"],
+    credentials: true
   },
 });
 
@@ -59,7 +70,6 @@ connectDB(); // Initialize database connection
 // ==============================================
 // ✅ Middleware Setup
 // ==============================================
-app.use(cors()); // Enable CORS for all routes
 app.use(express.json({ limit: "5mb" })); // Parse JSON bodies with 5MB limit
 app.use(express.urlencoded({ extended: true, limit: "5mb" })); // Parse URL-encoded bodies
 
