@@ -1,7 +1,7 @@
 import Home from "./assets/Components/Home/Home";
 import About_page from "./assets/Components/About/About_page";
 import Contact_us from "./assets/Components/Contact/Contact_us";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider, Navigate } from "react-router-dom";
 import Explore from "./assets/Components/Explore/Explore";
 import Explore_now from "./assets/Components/Explore/Explore_now";
 import Chat from "./assets/Components/Chat/Chat";
@@ -39,8 +39,27 @@ const router = createHashRouter([
     path: "/",
     element: (
       <>
-        <Navbar />
-        <Home />
+        {(() => {
+          const token = localStorage.getItem("token");
+          const userRole = localStorage.getItem("userRole");
+          
+          if (token) {
+            // If user is logged in, redirect to appropriate dashboard
+            if (userRole === "mentor") {
+              return <Navigate to="/mentor-dashboard" replace />;
+            } else {
+              return <Navigate to="/UserDashboard" replace />;
+            }
+          }
+          
+          // If not logged in, show home page
+          return (
+            <>
+              <Navbar />
+              <Home />
+            </>
+          );
+        })()}
       </>
     ),
   },
