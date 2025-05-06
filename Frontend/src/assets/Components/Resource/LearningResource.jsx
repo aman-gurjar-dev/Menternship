@@ -1,46 +1,52 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import webDevImage from "../../Images/webDev.jpg";
+import awsImage from "../../Images/aws.jpg";
+import aimlImage from "../../Images/AIML.jpeg";
+import dssImage from "../../Images/DSS.jpg";
+import cyberImage from "../../Images/cyber.jpeg";
+import blockchainImage from "../../Images/blockchain1.png";
 
 const learningResources = [
   {
     title: "Web Development",
     description: "Learn HTML, CSS, JavaScript, React, and more.",
-    image: "../src/assets/Images/webDev.jpg",
+    image: webDevImage,
     key: "web-development",
     bgColor: "bg-gradient-to-r from-purple-400 to-pink-500",
   },
   {
     title: "AWS",
     description: "Master AWS cloud services and cloud computing.",
-    image: "../src/assets/Images/aws.jpg",
+    image: awsImage,
     key: "aws",
     bgColor: "bg-gradient-to-r from-yellow-400 to-orange-500",
   },
   {
     title: "AI/ML",
     description: "Deep dive into Artificial Intelligence & Machine Learning.",
-    image: "./src/assets/Images/AIML.jpeg",
+    image: aimlImage,
     key: "ai-ml",
     bgColor: "bg-gradient-to-r from-blue-400 to-indigo-500",
   },
   {
     title: "Data Science",
     description: "Learn Python, statistics, and data visualization.",
-    image: "../src/assets/Images/DSS.jpg",
+    image: dssImage,
     key: "data-science",
     bgColor: "bg-gradient-to-r from-yellow-400 to-orange-500",
   },
   {
     title: "Cybersecurity",
     description: "Understand ethical hacking, security analysis & more.",
-    image: "../src/assets/Images/cyber.jpeg",
+    image: cyberImage,
     key: "cybersecurity",
     bgColor: "bg-gradient-to-r from-purple-400 to-pink-500",
   },
   {
     title: "Blockchain",
     description: "Explore blockchain technology and smart contracts.",
-    image: "../src/assets/Images/blockchain1.png",
+    image: blockchainImage,
     key: "blockchain",
     bgColor: "bg-gradient-to-r from-blue-400 to-indigo-500",
   },
