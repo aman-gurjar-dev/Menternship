@@ -1,66 +1,77 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Explore_now = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const getHeading = () => {
+    switch (path) {
+      case "/Explore_now":
+        return "Web Development";
+      case "/Explore_ai":
+        return "Artificial Intelligence";
+      case "/Explore_ds":
+        return "Data Science";
+      default:
+        return "Web Development";
+    }
+  };
+
   return (
     <>
-      <div>
-        {/* Navbar */}
-
+      <div className="min-h-screen relative">
         {/* Content */}
-        <div className="flex justify-center mt-[10vh] ">
-          <div className=" w-[80vw] md:h-[50vh] h-auto bg-[#be75bf13] shadow rounded-xl">
-            <h1 className="text-center text-xl font-bold mt-4">
-              Web Development
+        <div className="flex justify-center mt-[5vh] sm:mt-[10vh] px-4">
+          <div className="w-full max-w-4xl bg-[#be75bf13] shadow rounded-xl p-4 sm:p-6">
+            <h1 className="text-center text-xl sm:text-2xl font-bold mt-4">
+              {getHeading()}
             </h1>
 
-            <h1 className="md:text-2xl lg:text-3xl text-xl font-semibold mt-[5vh] ml-[5vw] ">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-[3vh] sm:mt-[5vh] ml-[2vw] sm:ml-[5vw]">
               What We Provide:
             </h1>
-            <ul className="ml-[5vw] mt-[2vh] lg:text-xl text-sm">
-              <li>
-                <h1 className="text-[#9755B8] inline">
-                  1:1 Mentorship Support :
-                </h1>{" "}
-                Get personalized guidance from industry experts.
+            <ul className="ml-[2vw] sm:ml-[5vw] mt-[2vh] text-sm sm:text-base lg:text-xl space-y-2 sm:space-y-3">
+              <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <h1 className="text-[#9755B8] inline">1:1 Mentorship Support :</h1>
+                <span>Get personalized guidance from industry experts.</span>
               </li>
-              <li>
-                <h1 className="text-[#9755B8] inline">Interview Prep :</h1>{" "}
-                Practice real interview questions and coding challenges.
+              <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <h1 className="text-[#9755B8] inline">Interview Prep :</h1>
+                <span>Practice real interview questions and coding challenges.</span>
               </li>
-              <li>
-                <h1 className="text-[#9755B8] inline">
-                  Internship Opportunities :
-                </h1>{" "}
-                Gain hands-on experience with top companies.
+              <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <h1 className="text-[#9755B8] inline">Internship Opportunities :</h1>
+                <span>Gain hands-on experience with top companies.</span>
               </li>
-              <li>
-                <h1 className="text-[#9755B8] inline">Live Project Ideas :</h1>{" "}
-                Work on real-world projects to build your portfolio.
+              <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <h1 className="text-[#9755B8] inline">Live Project Ideas :</h1>
+                <span>Work on real-world projects to build your portfolio.</span>
               </li>
             </ul>
 
-            <div className=" flex justify-center items-center">
+            <div className="flex justify-center items-center mt-8 sm:mt-12">
               <NavLink
-                to="/Chat_now"
-                className="bg-[#e3a7eb4c] py-2 rounded-4xl text-xl font-semibold sm:mt-[6vh] my-20 px-[10vw] cursor-pointer relative z-20"
+                to="/login"
+                className="bg-[#e3a7eb4c] py-2 px-6 sm:px-[10vw] rounded-4xl text-lg sm:text-xl font-semibold hover:bg-[#e3a7eb60] transition-colors duration-300 cursor-pointer relative z-20"
               >
                 Join us now
               </NavLink>
             </div>
           </div>
         </div>
+
         {/* Menternship means opportunity */}
         <div className="invisible md:visible">
-          <span className=" absolute top-4 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-12   lg:px-15 md:text-sm xl:text-xl text-center  font-semibold lg:text-xl text-[#FFFFFF] z-10  p-2 m-auto ">
+          <span className="absolute -top-35  lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-8 lg:px-15 md:text-sm xl:text-xl text-center font-semibold lg:text-xl text-[#FFFFFF] z-10 p-2 m-auto">
             Menternship{" "}
-            <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
+            <p className="inline text-[#7A42B5] relative z-11">Means</p> <br />{" "}
             Opportunity
           </span>
         </div>
 
-        {/* footer  */}
-        <footer className=" absolute bottom-0 bg-[#5f307b14] w-[100vw] text-center p-5  font-semibold text-sm ">
+        {/* footer */}
+        <footer className="absolute bottom-0 bg-[#5f307b14] w-full text-center p-5 font-semibold text-sm">
           © 2025 MENTERNSHIP. All rights reserved.
         </footer>
       </div>

@@ -54,7 +54,25 @@ const router = createHashRouter([
     ),
   },
   {
-    path: "/Explore_web",
+    path: "/Explore_now",
+    element: (
+      <>
+        <Navbar />
+        <Explore_now />
+      </>
+    ),
+  },
+  {
+    path: "/Explore_ai",
+    element: (
+      <>
+        <Navbar />
+        <Explore_now />
+      </>
+    ),
+  },
+  {
+    path: "/Explore_ds",
     element: (
       <>
         <Navbar />

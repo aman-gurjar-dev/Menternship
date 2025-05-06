@@ -37,18 +37,6 @@ export const Navbar = () => {
               About
             </NavLink>
           </li>
-          <li className="inline-block mx-[3vw]">
-            <NavLink
-              to="/explorementor"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-blue-200 font-bold border-b-2 border-blue-200"
-                  : "text-white"
-              }
-            >
-              Mentors
-            </NavLink>
-          </li>
 
           <li className="inline-block mx-[3vw] ">
             <NavLink
