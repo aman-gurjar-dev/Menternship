@@ -244,10 +244,73 @@ function App() {
         <CopilotKit publicApiKey="ck_pub_386cadf26332be4af7eb573c5163e3cb">
           <CopilotSidebar
             labels={{
-              title: "Sidebar Assistant",
-              initial: "How can I help you today?"
+              title: "Menternship AI Assistant",
+              initial: "👋 Hi! How can I help you today?"
             }}
-            instructions="Your product deserves an AI sidekick"
+            instructions={`You are Menternship's AI Assistant. Help users with mentorship, career guidance, interview prep, and learning resources. Be friendly, concise, and proactive.`}
+            placeholder="Ask me anything about mentorship, careers, or learning..."
+            suggestions={[
+              "Find me a mentor in Data Science",
+              "How do I prepare for interviews?",
+              "Show me learning resources for React",
+              "What is the best way to improve my resume?",
+              "How can I book a session with a mentor?"
+            ]}
+            defaultOpen={true}
+            defaultPosition="right"
+            defaultWidth={420}
+            showAvatar={true}
+            showHeader={true}
+            showFooter={true}
+            showInputBox={true}
+            showSuggestions={true}
+            theme={{
+              "--copilot-sidebar-bg": "linear-gradient(135deg, #1a171e 0%, #7a42b8 100%)",
+              "--copilot-sidebar-header-bg": "rgba(34, 24, 56, 0.85)",
+              "--copilot-sidebar-header-color": "#fff",
+              "--copilot-sidebar-title-font": "700 1.5rem 'Montserrat', sans-serif",
+              "--copilot-sidebar-border-radius": "22px",
+              "--copilot-sidebar-shadow": "0 8px 32px 0 rgba(58, 29, 110, 0.25)",
+              "--copilot-sidebar-input-bg": "rgba(255,255,255,0.08)",
+              "--copilot-sidebar-input-color": "#fff",
+              "--copilot-sidebar-input-border": "1.5px solid #7a42b8",
+              "--copilot-sidebar-suggestion-bg": "rgba(122,66,184,0.12)",
+              "--copilot-sidebar-suggestion-color": "#fff",
+              "--copilot-sidebar-suggestion-hover-bg": "#7a42b8",
+              "--copilot-sidebar-suggestion-hover-color": "#fff",
+              "--copilot-sidebar-bubble-user-bg": "#7a42b8",
+              "--copilot-sidebar-bubble-user-color": "#fff",
+              "--copilot-sidebar-bubble-ai-bg": "rgba(255,255,255,0.10)",
+              "--copilot-sidebar-bubble-ai-color": "#fff",
+              "--copilot-sidebar-footer-bg": "rgba(34, 24, 56, 0.85)",
+              "--copilot-sidebar-footer-color": "#fff",
+              "--copilot-sidebar-scrollbar-thumb": "#7a42b8",
+              "--copilot-sidebar-scrollbar-track": "#2d1a3a"
+            }}
+            header={
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "16px 0"
+              }}>
+                <img src="/logo192.png" alt="Menternship Logo" style={{ width: 40, height: 40, borderRadius: "50%" }} />
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: "1.2rem" }}>Menternship AI Assistant</div>
+                  <div style={{ fontSize: "0.95rem", color: "#bfa3e3" }}>Your smart career companion</div>
+                </div>
+              </div>
+            }
+            footer={
+              <div style={{
+                textAlign: "center",
+                fontSize: "0.9rem",
+                color: "#bfa3e3",
+                padding: "8px 0"
+              }}>
+                © 2025 Menternship. All rights reserved.
+              </div>
+            }
           />
         </CopilotKit>
       </body>

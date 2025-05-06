@@ -39,19 +39,22 @@ const MentorCard = ({ mentor }) => {
     if (!token || !mentor?._id) return;
 
     try {
-      const { data } = await axios.get(
-        `${config.backendUrl}/api/mentors/${mentor._id}/followers`,
+      // First get the current user's data
+      const userResponse = await axios.get(
+        `${config.backendUrl}/api/users/me`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
 
-      const mentors = data?.followedMentors || [];
-      setFollowedMentors(mentors);
-      const followed = mentors.some((m) => m._id === mentor._id);
-      setIsFollowed(followed);
+      if (userResponse.data?.user?.followedMentors) {
+        const followed = userResponse.data.user.followedMentors.some(
+          (m) => m._id === mentor._id
+        );
+        setIsFollowed(followed);
+      }
     } catch (err) {
-      console.error("Error fetching followed mentors:", err);
+      console.error("Error fetching user data:", err);
     }
   }, [token, mentor?._id]);
 
@@ -69,25 +72,27 @@ const MentorCard = ({ mentor }) => {
     try {
       setLoading(true);
 
-      await axios.post(
-        `${config.backendUrl}/api/students/${currentUser.id}/follow/${mentor._id}`,
+      const response = await axios.post(
+        `${config.backendUrl}/api/followMentor/${mentor._id}`,
         {},
-        { headers: { Authorization: `Bearer ${token}` } }
+        { 
+          headers: { 
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
       );
 
-      const updatedFollow = !isFollowed;
-      setIsFollowed(updatedFollow);
-
-      setFollowedMentors((prev) =>
-        updatedFollow
-          ? [...prev, mentor]
-          : prev.filter((m) => m._id !== mentor._id)
-      );
-
-      showMessage(updatedFollow ? "Mentor followed!" : "Mentor unfollowed");
+      if (response.data.success) {
+        const updatedFollow = !isFollowed;
+        setIsFollowed(updatedFollow);
+        showMessage(updatedFollow ? "Mentor followed!" : "Mentor unfollowed");
+      } else {
+        throw new Error(response.data.error || "Failed to update follow status");
+      }
     } catch (error) {
       console.error("Error updating follow status:", error.response?.data || error.message);
-      showMessage("Failed to update follow status");
+      showMessage(error.response?.data?.error || "Failed to update follow status");
     } finally {
       setLoading(false);
     }

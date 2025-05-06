@@ -868,12 +868,30 @@ app.post("/api/followMentor/:mentorId", verifyToken, async (req, res) => {
     const { mentorId } = req.params;
     const userId = req.user.userId;
 
+    // Validate ObjectIds
+    if (!mongoose.Types.ObjectId.isValid(mentorId) || !mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ 
+        success: false,
+        error: "Invalid mentor or user ID" 
+      });
+    }
+
     // Find user and mentor
     const user = await userModel.findById(userId);
     const mentor = await mentorModel.findById(mentorId);
 
-    if (!user || !mentor) {
-      return res.status(404).json({ error: "User or Mentor not found" });
+    if (!user) {
+      return res.status(404).json({ 
+        success: false,
+        error: "User not found" 
+      });
+    }
+
+    if (!mentor) {
+      return res.status(404).json({ 
+        success: false,
+        error: "Mentor not found" 
+      });
     }
 
     // Check if user already follows the mentor
@@ -881,27 +899,62 @@ app.post("/api/followMentor/:mentorId", verifyToken, async (req, res) => {
       id.toString() === mentorId.toString()
     );
 
-    // Toggle follow status
-    if (isFollowing) {
-      user.followedMentors.pull(mentorId);
-      mentor.followers.pull(userId);
-    } else {
-      user.followedMentors.push(mentorId);
-      mentor.followers.push(userId);
+    // Start a session for transaction
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+      // Toggle follow status
+      if (isFollowing) {
+        // Unfollow
+        await userModel.findByIdAndUpdate(
+          userId,
+          { $pull: { followedMentors: mentorId } },
+          { session }
+        );
+        await mentorModel.findByIdAndUpdate(
+          mentorId,
+          { $pull: { followers: userId } },
+          { session }
+        );
+      } else {
+        // Follow
+        await userModel.findByIdAndUpdate(
+          userId,
+          { $addToSet: { followedMentors: mentorId } },
+          { session }
+        );
+        await mentorModel.findByIdAndUpdate(
+          mentorId,
+          { $addToSet: { followers: userId } },
+          { session }
+        );
+      }
+
+      // Commit the transaction
+      await session.commitTransaction();
+
+      res.status(200).json({
+        success: true,
+        message: isFollowing ? "Mentor unfollowed" : "Mentor followed",
+        followed: !isFollowing
+      });
+
+    } catch (err) {
+      // Abort transaction on error
+      await session.abortTransaction();
+      throw err;
+    } finally {
+      session.endSession();
     }
 
-    // Save changes
-    await user.save();
-    await mentor.save();
-
-    res.status(200).json({
-      message: isFollowing ? "Mentor unfollowed" : "Mentor followed",
-      followed: !isFollowing,
-      followedMentors: user.followedMentors,
-    });
   } catch (error) {
     console.error("Follow/Unfollow Error:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to update follow status",
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 });
 

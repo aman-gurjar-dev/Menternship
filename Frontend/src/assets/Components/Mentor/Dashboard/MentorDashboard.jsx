@@ -34,16 +34,39 @@ const MentorDashboard = () => {
     const fetchMentorDetails = async () => {
       try {
         const token = localStorage.getItem('token');
-        if (!token) {
-          navigate('/login');
+        const userRole = localStorage.getItem('userRole');
+        const mentorId = localStorage.getItem('mentorId');
+        
+        if (!token || userRole !== 'mentor') {
+          console.log('No token or invalid role, redirecting to login');
+          navigate('/Loginmentor');
           return;
         }
+
+        // First try to get mentor data using the stored mentorId
+        let response;
+        try {
+          response = await axios.get(`${config.backendUrl}/api/mentors/${mentorId}`, {
+            headers: { 
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
+        } catch (err) {
+          // If that fails, try the /me endpoint
+          response = await axios.get(`${config.backendUrl}/api/mentors/me`, {
+            headers: { 
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
+        }
   
-        const response = await axios.get(`${config.backendUrl}/api/mentors/me`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        if (!response.data) {
+          throw new Error('No mentor data received');
+        }
   
-        console.log('Fetched mentor data:', response.data); // Log the fetched data
+        console.log('Fetched mentor data:', response.data);
   
         setMentor(response.data);
         setEditData({
@@ -59,8 +82,17 @@ const MentorDashboard = () => {
         });
         setNotificationCount(response.data.pendingMessages || 0);
       } catch (err) {
-        console.error('Error fetching mentor details:', err); // Log the error
-        setError(err.response?.data?.error || 'Failed to fetch mentor details');
+        console.error('Error fetching mentor details:', err);
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          // Clear invalid session data
+          localStorage.removeItem('token');
+          localStorage.removeItem('userRole');
+          localStorage.removeItem('mentorId');
+          localStorage.removeItem('mentorData');
+          navigate('/Loginmentor');
+        } else {
+          setError(err.response?.data?.error || 'Failed to fetch mentor details. Please try logging in again.');
+        }
       } finally {
         setLoading(false);
       }
