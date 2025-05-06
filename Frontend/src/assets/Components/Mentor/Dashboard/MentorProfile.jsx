@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { Edit, Check, X, Linkedin, Github, Globe, Award, Briefcase, Clock, Star, User, Mail, Phone, MapPin } from 'react-feather';
+import { useState, useRef } from 'react';
+import { Edit, Check, X, Linkedin, Github, Globe, Award, Briefcase, Clock, Star, User, Mail, Phone, MapPin, Camera, Upload } from 'react-feather';
 import { Avatar, Badge, Button } from '../components/ui';
 
 const MentorProfile = () => {
+  const fileInputRef = useRef(null);
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState({
     name: 'Dr. Sarah Johnson',
@@ -22,6 +23,7 @@ const MentorProfile = () => {
     website: 'sarahjohnson.dev',
     github: 'github.com/sarahjohnson',
     linkedin: 'linkedin.com/in/sarahjohnson',
+    profileImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
   });
 
   const [editData, setEditData] = useState({ ...profile });
@@ -38,6 +40,29 @@ const MentorProfile = () => {
   const handleCancel = () => {
     setEditData(profile);
     setIsEditing(false);
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Check if file is an image
+      if (!file.type.startsWith('image/')) {
+        alert('Please upload an image file');
+        return;
+      }
+
+      // Check file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size should be less than 5MB');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        handleEditChange('profileImage', e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -84,12 +109,30 @@ const MentorProfile = () => {
             <div className="bg-white shadow rounded-lg overflow-hidden">
               <div className="p-6">
                 <div className="flex flex-col items-center">
-                  <div className="relative">
+                  <div className="relative group">
                     <Avatar 
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={isEditing ? editData.profileImage : profile.profileImage}
                       alt={profile.name}
                       size="xl"
                     />
+                    {isEditing && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button
+                          onClick={() => fileInputRef.current?.click()}
+                          className="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
+                          title="Upload Photo"
+                        >
+                          <Upload className="h-6 w-6 text-gray-700" />
+                        </button>
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileUpload}
+                          className="hidden"
+                        />
+                      </div>
+                    )}
                     {profile.verified && (
                       <div className="absolute bottom-0 right-0 bg-blue-500 rounded-full p-1">
                         <Check className="h-4 w-4 text-white" />

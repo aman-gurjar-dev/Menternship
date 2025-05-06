@@ -42,46 +42,34 @@ const Chat = () => {
     scrollToBottom();
   }, [messages]);
 
-  const getLocalAIResponse = (userInput) => {
+  const getAIResponse = (userInput) => {
     const lowerInput = userInput.toLowerCase();
+    
+    // Check for exact matches first
+    for (const key in knowledgeBase) {
+      if (lowerInput === key) {
+        return knowledgeBase[key];
+      }
+    }
+    
+    // Check for partial matches
     for (const key in knowledgeBase) {
       if (lowerInput.includes(key)) {
         return knowledgeBase[key];
       }
     }
-    return knowledgeBase.default;
-  };
 
-  // ✅ HuggingFace API Integration
-  const sendToHuggingFace = async (message) => {
-    const API_KEY = import.meta.env.VITE_HUGGINGFACE_API_KEY; // Fetch API key from .env file
-  
-    if (!API_KEY) {
-      console.warn("Missing Hugging Face API key.");
-      return "AI configuration is missing. Please try again later.";
+    // If no matches found, provide a contextual response
+    if (lowerInput.includes("thank")) {
+      return "You're welcome! Is there anything else I can help you with?";
     }
-  
-    const API_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta";
-  
-    const headers = {
-      Authorization: `Bearer ${API_KEY}`,
-      "Content-Type": "application/json",
-    };
-  
-    try {
-      const response = await axios.post(
-        `${config.backendUrl}/api/messages`,
-        { inputs: message },
-        { headers }
-      );
-  
-      const generatedText = response.data?.[0]?.generated_text;
-      const reply = generatedText?.replace(message, "").trim();
-      return reply || "No response from AI.";
-    } catch (error) {
-      console.error("HuggingFace API error:", error);
-      return "Sorry, Hugging Face AI is currently unavailable.";
+    
+    if (lowerInput.includes("bye") || lowerInput.includes("goodbye")) {
+      return "Goodbye! Feel free to return anytime you need mentorship advice.";
     }
+
+    // Default response with suggestions
+    return "I understand you're asking about something specific. While I can help with general mentorship topics, for more detailed guidance, I recommend:\n\n1. Using the 'Explore Mentors' feature to connect with experienced professionals\n2. Checking our resources section for detailed guides\n3. Asking specific questions about career development, skill building, or mentorship\n\nWhat would you like to know more about?";
   };
 
   const handleSendMessage = async (e) => {
@@ -98,25 +86,16 @@ const Chat = () => {
     setInputMessage("");
     setIsLoading(true);
 
-    const localResponse = getLocalAIResponse(inputMessage);
-
-    if (localResponse !== knowledgeBase.default) {
+    // Simulate a small delay for more natural interaction
+    setTimeout(() => {
+      const botResponse = getAIResponse(inputMessage);
       setMessages(prev => [...prev, {
-        text: localResponse,
+        text: botResponse,
         sender: "bot",
         timestamp: new Date()
       }]);
       setIsLoading(false);
-      return;
-    }
-
-    const botResponse = await sendToHuggingFace(inputMessage);
-    setMessages(prev => [...prev, {
-      text: botResponse,
-      sender: "bot",
-      timestamp: new Date()
-    }]);
-    setIsLoading(false);
+    }, 500);
   };
 
   const handleKeyPress = (e) => {
@@ -201,11 +180,12 @@ const Chat = () => {
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
                 className="flex-1 p-2 rounded-md text-white bg-[#2D2D3A]"
                 placeholder="Type your message..."
               />
               <button type="submit" className="bg-blue-500 px-4 py-2 rounded-md">
-                Send
+                <FiSend />
               </button>
             </form>
           </div>
