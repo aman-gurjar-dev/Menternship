@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FaMap, FaYoutube, FaFilePdf, FaBook, FaNewspaper, FaGraduationCap } from "react-icons/fa";
 
 const learningResources = [
   {
@@ -49,37 +51,37 @@ const learningResources = [
 const resourceTypes = [
   {
     name: "YouTube Videos",
-    icon: "🎥",
+    icon: <FaYoutube className="text-2xl" />,
     bgColor: "bg-[#477CD6]",
     path: "ytResource"
   },
   {
     name: "Ebooks",
-    icon: "📚",
+    icon: <FaBook className="text-2xl" />,
     bgColor: "bg-[#477CD6]",
     path: "Ebook"
   },
   {
     name: "PDFs",
-    icon: "📄",
+    icon: <FaFilePdf className="text-2xl" />,
     bgColor: "bg-[#477CD6]",
     path: "pdf"
   },
   {
     name: "Roadmaps",
-    icon: "🗺️",
+    icon: <FaMap className="text-2xl" />,
     bgColor: "bg-[#477CD6]",
     path: "roadmap"
   },
   {
     name: "Articles",
-    icon: "📝",
+    icon: <FaNewspaper className="text-2xl" />,
     bgColor: "bg-[#477CD6]",
     path: "articles"
   },
   {
     name: "Courses",
-    icon: "🎓",
+    icon: <FaGraduationCap className="text-2xl" />,
     bgColor: "bg-[#477CD6]",
     path: "courses"
   }
@@ -98,51 +100,71 @@ const LearningResource = () => {
   } else if (location.pathname.includes("roadmap")) {
     mode = "roadmap";
   }
-  
 
   return (
-    <div className="w-full h-full overflow-auto bg-[#1A171E] p-10">
-      <h1 className="text-4xl font-bold text-black text-center mb-10">Explore {mode} Content</h1>
-
-      <div className="grid md:grid-cols-3 gap-8 place-items-center relative z-10">
-        {learningResources.map((resource, index) => {
-        let targetRoute = `/learningResources/ytResource/${resource.key}`; // Default: YouTube
-
-        if (mode === "ebook") {
-        targetRoute = `/learningResources/Ebook/${resource.key}`;
-        } else if (mode === "pdf") {
-        targetRoute = `/learningResources/pdf/${resource.key}`;
-         } else if (mode === "roadmap") {
-        targetRoute = `/learningResources/roadmap/${resource.key}`;
-    }
-
-    return (
-      <div
-        key={index}
-        className={`shadow-lg rounded-lg overflow-hidden w-[350px] transition-transform transform hover:scale-105 ${resource.bgColor}`}
-      >
-        <div className="h-56 w-full overflow-hidden">
-          <img
-            src={resource.image}
-            alt={resource.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="p-6 text-center text-white">
-          <h2 className="text-2xl font-semibold">{resource.title}</h2>
-          <p className="mt-2">{resource.description}</p>
-          <button
-            onClick={() => navigate(targetRoute)}
-            className="mt-4 bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-red-600 transition cursor-pointer"
-          >
-            Explore Now
-          </button>
-        </div>
-      </div>
-    );
-  })}
+    <div className="min-h-screen bg-[#0F172A] p-4 md:p-8">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#38BDF8] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-[#818CF8] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#F472B6] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 md:mb-12"
+        >
+          Explore {mode} Content
+        </motion.h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          {learningResources.map((resource, index) => {
+            let targetRoute = `/learningResources/ytResource/${resource.key}`; // Default: YouTube
+
+            if (mode === "ebook") {
+              targetRoute = `/learningResources/Ebook/${resource.key}`;
+            } else if (mode === "pdf") {
+              targetRoute = `/learningResources/pdf/${resource.key}`;
+            } else if (mode === "roadmap") {
+              targetRoute = `/learningResources/roadmap/${resource.key}`;
+            }
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className={`relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 ${resource.bgColor}`}
+              >
+                <div className="aspect-w-16 aspect-h-9 w-full overflow-hidden">
+                  <img
+                    src={resource.image}
+                    alt={resource.title}
+                    className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-4 md:p-6 text-white">
+                  <h2 className="text-xl md:text-2xl font-semibold mb-2">{resource.title}</h2>
+                  <p className="text-white/80 text-sm md:text-base mb-4">{resource.description}</p>
+                  <button
+                    onClick={() => navigate(targetRoute)}
+                    className="w-full bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    Explore Now
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
