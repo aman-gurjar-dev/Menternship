@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import {motion} from "framer-motion";
 
 const Explore_now = () => {
   const location = useLocation();
@@ -20,9 +21,21 @@ const Explore_now = () => {
 
   return (
     <>
-      <div className="min-h-screen relative">
+      <motion.div className="min-h-screen relative"
+        initial={{ opacity: 0 , scale: 0.8 }}
+        animate={{ opacity: 1 , scale: 1}}
+      
+        exit={{ opacity: 0 , scale: 0.8 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Content */}
-        <div className="flex justify-center mt-[5vh] sm:mt-[10vh] px-4">
+        <motion.div className="flex justify-center mt-[5vh] sm:mt-[10vh] px-4"
+        initial={{ opacity: 0 , scale: 0.5 }}
+        animate={{ opacity: 1 , scale: 1}}
+      
+        exit={{ opacity: 0 , scale: 0.5 }}
+        transition={{ duration: 0.5 }}
+        >
           <div className="w-full max-w-4xl bg-[#be75bf13] shadow rounded-xl p-4 sm:p-6">
             <h1 className="text-center text-xl sm:text-2xl font-bold mt-4">
               {getHeading()}
@@ -59,7 +72,7 @@ const Explore_now = () => {
               </NavLink>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Menternship means opportunity */}
         <div className="invisible md:visible">
@@ -74,7 +87,7 @@ const Explore_now = () => {
         <footer className="absolute bottom-0 bg-[#5f307b14] w-full text-center p-5 font-semibold text-sm">
           © 2025 MENTERNSHIP. All rights reserved.
         </footer>
-      </div>
+      </motion.div>
     </>
   );
 };

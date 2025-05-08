@@ -1,112 +1,113 @@
 import React from "react";
-import MyImage from "../../Images/logo.png";
-import effect from "../../Images/Ellipse 1.png";
-import phone from "../../Images/Phone Ringing.png";
-import location from "../../Images/Location Pin.png";
-import mail from "../../Images/mail.png";
-import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 
 const Contact_us = () => {
   return (
     <>
-      <div className="">
-        {/* Menternship mean */}
-        <div className="invisible md:visible">
-          <span className=" absolute top-4 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-12   lg:px-15 md:text-sm xl:text-xl text-center  font-semibold lg:text-xl text-[#FFFFFF] z-10  p-2 m-auto ">
-            Menternship{" "}
-            <p className="inline text-[#7A42B5] relative z-11"> Means</p> <br />{" "}
-            Opportunity
-          </span>
-        </div>
+      <motion.div
+        className="invisible md:visible"
+        initial={{ opacity: 0, x: -60 ,y: -90 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <span className="absolute top-4 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-12 lg:px-15 md:text-sm xl:text-xl text-center font-semibold lg:text-xl text-[#FFFFFF] z-10 p-2 m-auto">
+          Menternship{" "}
+          <p className="inline text-[#7A42B5] relative z-11">Means</p> <br />
+          Opportunity
+        </span>
+      </motion.div>
 
-        {/* Content */}
+      <motion.div 
+        initial={{ opacity: 0, y: -50 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="flex flex-col items-center justify-center w-full"
+      >
 
-        <div className="">
-          <div className=" w-[80vw] h-[70vh] flex justify-center items-center mx-[10vw] mt-[3vh] ">
-            <div className="sm:w-[30vw] h-[70vh] bg-[#A488DB] invisible sm:visible w-0 ">
-              <div className=" mt-[4vh] ">
-                <h1 className="text-4xl text-center text-black font-bold">
-                  Contact <span className=" text-[#F86B00]">Us</span>
-                </h1>
-                <h1 className="text-center text-xl font-semibold">
-                  We are here to help you
-                </h1>
-              </div>
+        {/* Contact Form Section */}
+        <div className="w-[80vw] h-[70vh] flex justify-center items-center mx-[10vw] mt-[3vh]">
+          
+          {/* Contact Details */}
+          <motion.div 
+            className="sm:w-[30vw] h-[70vh] bg-[#A488DB] invisible sm:visible w-0 flex flex-col justify-center items-center"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl text-center text-black font-bold">
+              Contact <span className="text-[#F86B00]">Us</span>
+            </h1>
+            <h1 className="text-center text-xl font-semibold">
+              We are here to help you
+            </h1>
 
-              <div className=" mt-[7vh] font-bold ">
-                <div className=" flex justify-center my-[4vh]">
-                  <img
-                    src={phone}
-                    alt="Phone"
-                    className=" inline max-w-16 mx-[2vw] "
-                  />
-                  <p className="inline text-black">
-                    Phone - <br />
-                    +91 1234567890
-                  </p>
-                </div>
-                <div className=" flex justify-center my-[4vh] ">
-                  <img
-                    src={mail}
-                    alt="Phone"
-                    className=" inline max-w-16 mx-[2vw] "
-                  />
-                  <p className="inline text-black">
-                    Phone - <br />
-                    +91 1234567890
-                  </p>
-                </div>
-                <div className=" flex justify-center  my-[4vh] ">
-                  <img
-                    src={location}
-                    alt="Phone"
-                    className=" inline max-w-16 mx-[2vw]"
-                  />
-                  <p className="inline text-black">
-                    Phone - <br />
-                    +91 1234567890
-                  </p>
-                </div>
-              </div>
+            <div>
+              {[  
+              { icon: <FiPhone />, text: "Phone - +91 9131164828   " },
+                { icon: <FiMail />, text: "Email - amangurjar160.com" },
+              { icon: <FiMapPin />, text: "Location - Indore, MP   " }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center justify-center my-[4vh]"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2, duration: 0.6 }}
+                >
+                  <span className="text-3xl mx-[1vw]">{item.icon}</span>
+                  <p className="text-black">{item.text}</p>
+                </motion.div>
+              ))}
             </div>
-            <div className=" bg-[#2E103B] w-[80vw] sm:w-[50vw] h-[70vh]  ">
-              <div className=" relative left-[5vw] top-[5vh] flex-col">
-                <h1 className=" sm:text-4xl font-bold text-2xl">Let’s Talk</h1>
-                <h1 className=" sm:text-xl text-blue-400">
-                  Feel free to contact us below
-                </h1>
-                <input
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div 
+            className="bg-[#2E103B] w-[80vw] sm:w-[50vw] h-[70vh] flex flex-col justify-center items-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            <div className="flex flex-col w-[80%] sm:w-[60%] items-center">
+              <h1 className="sm:text-4xl font-bold text-2xl text-white">Let’s Talk</h1>
+              <h1 className="sm:text-xl text-blue-400">Feel free to contact us below</h1>
+
+              {/* Inputs */}
+              {["Your Name...", "Email Id...", "Phone Number"].map((placeholder, index) => (
+                <motion.input
+                  key={index}
                   type="text"
-                  className=" w-[60vw] sm:w-[25vw] h-[5vh] bg-white text-black block my-4"
-                  placeholder="Your Name..."
+                  className="w-full h-[5vh] bg-white text-black text-center rounded-lg block my-4"
+                  placeholder={placeholder}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.2, duration: 0.5 }}
                 />
-                <input
-                  type="text"
-                  className=" w-[60vw] sm:w-[25vw]  h-[5vh] text-black bg-white block my-4"
-                  placeholder="Email Id..."
-                />
-                <input
-                  type="text"
-                  className=" w-[60vw] sm:w-[25vw]  h-[5vh] text-black bg-white block my-4"
-                  placeholder="Phone Number"
-                />
-                <textarea
-                  name=""
-                  id=""
-                  className="w-[60vw] sm:w-[25vw] h-[10vh] text-black bg-white my-4"
-                  placeholder="Message.."
-                ></textarea>
-                <div>
-                  <button className=" rounded-4xl bg-[#477CD6] px-[5vw] relative z-10 py-[1vh] items-center">
-                    {" "}
-                    SUBMIT
-                  </button>
-                </div>
-              </div>
+              ))}
+
+              <motion.textarea
+                className="w-full h-[10vh] text-black bg-white text-center rounded-lg my-4"
+                placeholder="Message..."
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              ></motion.textarea>
+
+              {/* Submit Button */}
+              <motion.button
+                className="rounded-full bg-[#477CD6] px-8 py-2 text-white text-lg mt-2"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4 }}
+                whileHover={{ scale: 1.1 }}
+              >
+                SUBMIT
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
