@@ -16,6 +16,7 @@ const Home = () => {
       <motion.main className=" relative z-10 "
         initial={{opacity: 0, x:-300}}
         animate={{opacity: 1, x:0}}
+        exit={{opacity: 0, x:-300}}
         transition={{duration: 1 , ease:"anticipate"}}
       >
         <section className="mt-[7vh] sm:ml-[10vw] ml-3">
@@ -60,11 +61,13 @@ const Home = () => {
       <motion.aside className="absolute right-0 top-0 min-h-full z-10 w-0 lg:w-auto"
         initial={{opacity: 0, x: 100}}
         animate={{opacity: 1, x: 0}}
+        exit={{opacity: 0, x: 100}}
         transition={{duration: 0.5 , ease:"anticipate"}}
       >
         <motion.img
           initial={{opacity: 0, y:100}}
           animate={{opacity: 1, y:0}}
+          exit={{opacity: 0, y: 100}}
           transition={{duration: 1 , ease:"anticipate"}}
           src={photo1}
           alt="Photo 1"
@@ -73,6 +76,7 @@ const Home = () => {
         <motion.img
          initial={{opacity: 0, y:100}}
          animate={{opacity: 1, y:0}}
+         exit={{opacity: 0, y: 100}}
          transition={{duration: 1 , ease:"anticipate"}}
           src={photo2}
           alt="Photo 2"
@@ -81,6 +85,7 @@ const Home = () => {
         <motion.img
          initial={{opacity: 0, y:100}}
          animate={{opacity: 1, y:0}}
+         exit={{opacity: 0, y: 100}}
          transition={{duration: 1 , ease:"anticipate"}}
           src={photo3}
           alt="Photo 3"
@@ -89,6 +94,7 @@ const Home = () => {
         <motion.img
          initial={{opacity: 0, y:-50}}
          animate={{opacity: 1, y:0}}
+         exit={{opacity: 0, y: -50}}
          transition={{duration: 1 , ease:"anticipate"}}
           src={photo4}
           alt="Photo 4"
@@ -97,6 +103,7 @@ const Home = () => {
         <motion.img
            initial={{opacity: 0, y:-50}}
            animate={{opacity: 1, y:0}}
+           exit={{opacity: 0, y: -50}}
            transition={{duration: 1 , ease:"anticipate"}}
           src={photo5}
           alt="Photo 5"
@@ -105,6 +112,7 @@ const Home = () => {
         <motion.img 
            initial={{opacity: 0, y:-50}}
            animate={{opacity: 1, y:0}}
+           exit={{opacity: 0, y: -50}}
            transition={{duration: 1 , ease:"anticipate"}} 
           src={photo6}
           alt="Photo 6"

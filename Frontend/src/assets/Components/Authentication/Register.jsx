@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
+import { motion } from "framer-motion"; 
 import config from "../../utils/config";
 
 const Register = () => {
@@ -75,7 +76,12 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center relative overflow-hidden px-4 text-black">
+    <motion.div className="w-full h-screen flex justify-center items-center relative overflow-hidden px-4 text-black"
+    initial={{ opacity: 0 , scale: 0.8}}
+    animate={{ opacity: 1 , scale: 1}}
+    exit={{ opacity: 0 , scale: 0.8}}
+    transition={{ duration: 0.5 }}
+    >
       <div className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-lg xl:max-w-lg h-auto bg-transparent border-2 border-violet-200 rounded-2xl p-6 flex flex-col items-center relative z-10">
         <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 pb-2 bg-clip-text text-transparent">
           Register Now
@@ -152,7 +158,7 @@ const Register = () => {
           </button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
