@@ -10,6 +10,8 @@ import {motion} from "framer-motion";
 // import effect from "../../Images/Ellipse 1.png";
 import { NavLink } from "react-router-dom";
 
+const MotionNavLink = motion(NavLink);
+
 const Home = () => {
   return (
     <div className=" ml-5">
@@ -31,26 +33,38 @@ const Home = () => {
 
         <section className="mt-[6vh] sm:ml-[10vw] ml-3">
           <div className="mb-[1vh]">
-            <NavLink
+            <MotionNavLink
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.95, opacity: 0.8 }}
+            onClick={() => handleClick("/Login")}
+            transition={{ type: "spring", stiffness: 300 }}
               to="/Login"
               className="bg-[#477CD6] p-1 sm:px-16 px-7 rounded-3xl mr-5 mb-5 font-bold"
             >
               Start Today
-            </NavLink>
-            <NavLink
+            </MotionNavLink>
+            <MotionNavLink
+             whileHover={{ scale: 1.3 }}
+             whileTap={{ scale: 0.95, opacity: 0.8 }}
+             onClick={() => handleClick("/Login")}
+             transition={{ type: "spring", stiffness: 300 }}
               to="/Register"
               className="bg-[#FFF5F5] text-black p-1 sm:px-16 px-7 rounded-3xl font-bold"
             >
               Register
-            </NavLink>
+            </MotionNavLink>
           </div>
           <div className="mt-8">
-            <NavLink
+            <MotionNavLink
               to="/Explore_more"
+              whileHover={{ scale: 1.3 }}
+              whileTap={{ scale: 0.95, opacity: 0.8 }}
+              onClick={() => handleClick("/Login")}
+              transition={{ type: "spring", stiffness: 300 }}
               className="bg-[#D68F47] text-black rounded-3xl sm:px-41 sm:py-3 px-23 py-3 font-bold"
             >
               Explore More
-            </NavLink>
+            </MotionNavLink>
 
             
 
@@ -68,7 +82,7 @@ const Home = () => {
           initial={{opacity: 0, y:100}}
           animate={{opacity: 1, y:0}}
           exit={{opacity: 0, y: 100}}
-          transition={{duration: 1 , ease:"anticipate"}}
+          transition={{duration: 1 ,delay:0, ease:"anticipate"}}
           src={photo1}
           alt="Photo 1"
           className="max-h-[50vh] relative top-[5vh] right-80 xl:right-90"
@@ -77,7 +91,7 @@ const Home = () => {
          initial={{opacity: 0, y:100}}
          animate={{opacity: 1, y:0}}
          exit={{opacity: 0, y: 100}}
-         transition={{duration: 1 , ease:"anticipate"}}
+         transition={{duration: 1 , delay:0.2,ease:"anticipate"}}
           src={photo2}
           alt="Photo 2"
           className="absolute -top-0 right-45 max-h-[53vh] xl:right-50"
@@ -86,7 +100,7 @@ const Home = () => {
          initial={{opacity: 0, y:100}}
          animate={{opacity: 1, y:0}}
          exit={{opacity: 0, y: 100}}
-         transition={{duration: 1 , ease:"anticipate"}}
+         transition={{duration: 1 , delay:0.4, ease:"anticipate"}}
           src={photo3}
           alt="Photo 3"
           className="absolute top-[5vh] max-h-[54vh] right-10"
@@ -95,7 +109,7 @@ const Home = () => {
          initial={{opacity: 0, y:-50}}
          animate={{opacity: 1, y:0}}
          exit={{opacity: 0, y: -50}}
-         transition={{duration: 1 , ease:"anticipate"}}
+         transition={{duration: 1 , delay:0.6, ease:"anticipate"}}
           src={photo4}
           alt="Photo 4"
           className="absolute bottom-0 right-80 max-h-[40vh] xl:right-90"
@@ -104,7 +118,7 @@ const Home = () => {
            initial={{opacity: 0, y:-50}}
            animate={{opacity: 1, y:0}}
            exit={{opacity: 0, y: -50}}
-           transition={{duration: 1 , ease:"anticipate"}}
+           transition={{duration: 1 , delay:0.8, ease:"anticipate"}}
           src={photo5}
           alt="Photo 5"
           className="absolute bottom-0 right-45 max-h-[51vh] xl:right-50"
@@ -113,7 +127,7 @@ const Home = () => {
            initial={{opacity: 0, y:-50}}
            animate={{opacity: 1, y:0}}
            exit={{opacity: 0, y: -50}}
-           transition={{duration: 1 , ease:"anticipate"}} 
+           transition={{duration: 1 , delay:1, ease:"anticipate"}} 
           src={photo6}
           alt="Photo 6"
           className="absolute bottom-0 max-h-[38vh] right-10"
