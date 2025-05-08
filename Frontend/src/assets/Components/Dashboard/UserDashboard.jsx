@@ -81,20 +81,41 @@ const UserDashboard = () => {
       setIsLoading(true);
       setError(null);
       const token = localStorage.getItem("token");
-      if (token === null) {
-        alert("You must be logged in!");
-        navigate("/Login");
+      
+      // Check if token exists
+      if (!token) {
+        setError("You must be logged in to view this page!");
+        navigate("/Login", { replace: true });
         return;
       }
 
-      const res = await axios.get(`${config.backendUrl}/profile`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      try {
+        const res = await axios.get(`${config.backendUrl}/profile`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
-      setUserData(res.data.user);
+        if (res.data.user) {
+          setUserData(res.data.user);
+        } else {
+          throw new Error("Invalid user data received");
+        }
+      } catch (err) {
+        // Handle token expiration or invalid token
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("mentor");
+          localStorage.removeItem("chatMentorId");
+          sessionStorage.clear();
+          setError("Your session has expired. Please login again.");
+          navigate("/Login", { replace: true });
+        } else {
+          setError("Failed to fetch user data. Please try again.");
+        }
+      }
     } catch (err) {
       console.error("Error fetching user data:", err);
-      setError("Failed to fetch user data. Please try again.");
+      setError("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -110,8 +131,17 @@ const UserDashboard = () => {
 
   const handleLogout = useCallback(() => {
     if (window.confirm("Are you sure you want to logout?")) {
+      // Clear all user-related data from localStorage
       localStorage.removeItem("token");
-      navigate("/Login");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("mentor");
+      localStorage.removeItem("chatMentorId");
+      
+      // Clear any other potential user data
+      sessionStorage.clear();
+      
+      // Navigate to login page
+      navigate("/Login", { replace: true });
     }
   }, [navigate]);
 

@@ -1,18 +1,29 @@
 import React from "react";
 import MyImage from "../../Images/logo.png";
-
+import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 export const Navbar = () => {
   return (
     <>
-      <div className=" mt-2">
-        <img
+      <motion.div className=" mt-2" 
+        initial={{opacity: 0, y: -50}}
+        animate={{opacity: 1, y: 0}}
+        transition={{duration: 0.5 , ease:"anticipate"}}
+      >
+        <motion.img
+          
+          animate={{opacity: 1, rotate: 360 }}
+          transition={{duration: 1 , ease:"anticipate", delay: 0.5}}
           src={MyImage}
           alt=" LOGO "
           className=" lg:max-w-[9vw] ml-0 sm:ml-15 mt-4 inline w-20"
         />
         <ul className=" sm:ml-[12vw] ml-[5vw] mt-[5vh] w-auto list-none inline relative z-100">
-          <li className="inline-block mx-[3vw]">
+          <motion.li className="inline-block mx-[3vw]" 
+          initial={{scale:0.5}}
+          animate={{scale:1}}
+          transition={{duration: 0.3 , ease:"anticipate", delay: 0.5}}
+          >
             {" "}
             <NavLink
               to="/"
@@ -24,8 +35,10 @@ export const Navbar = () => {
             >
               Home
             </NavLink>
-          </li>
-          <li className="inline-block mx-[3vw]">
+          </motion.li>
+          <motion.li className="inline-block mx-[3vw]" initial={{scale:0.5}}
+          animate={{scale:1}}
+          transition={{duration: 0.3 , ease:"anticipate", delay: 0.5}}>
             <NavLink
               to="/About"
               className={({ isActive }) =>
@@ -36,9 +49,12 @@ export const Navbar = () => {
             >
               About
             </NavLink>
-          </li>
+          </motion.li>
 
-          <li className="inline-block mx-[3vw] ">
+          <motion.li className="inline-block mx-[3vw] "
+          initial={{scale:0.5}}
+          animate={{scale:1}}
+          transition={{duration: 0.3 , ease:"anticipate", delay: 0.5}}>
             <NavLink
               to="/Contact"
               className={({ isActive }) =>
@@ -49,9 +65,9 @@ export const Navbar = () => {
             >
               Contact
             </NavLink>
-          </li>
+          </motion.li>
         </ul>
-      </div>
+      </motion.div>
     </>
   );
 };

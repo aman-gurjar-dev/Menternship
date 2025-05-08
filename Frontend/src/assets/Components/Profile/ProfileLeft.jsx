@@ -12,7 +12,10 @@ const ProfileLeft = ({ active, setActive }) => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        if (!token) return;
+        if (!token) {
+          window.location.href = "/Login";
+          return;
+        }
 
         const res = await axios.get(`${config.backendUrl}/Profile`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -24,9 +27,20 @@ const ProfileLeft = ({ active, setActive }) => {
             // ✅ Append timestamp to bypass cache
             setCurrentImage(`http://127.0.0.1:3000${res.data.user.profileImage}?t=${Date.now()}`);
           }
+        } else {
+          throw new Error("Invalid user data received");
         }
       } catch (err) {
         console.error("Error fetching profile data:", err);
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          // Clear all user data and redirect to login
+          localStorage.removeItem("token");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("mentor");
+          localStorage.removeItem("chatMentorId");
+          sessionStorage.clear();
+          window.location.href = "/Login";
+        }
       }
     };
 
@@ -37,7 +51,16 @@ const ProfileLeft = ({ active, setActive }) => {
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
+      // Clear all user-related data from localStorage
       localStorage.removeItem("token");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("mentor");
+      localStorage.removeItem("chatMentorId");
+      
+      // Clear any other potential user data
+      sessionStorage.clear();
+      
+      // Navigate to login page
       window.location.href = "/Login";
     }
   };

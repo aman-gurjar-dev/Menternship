@@ -275,7 +275,7 @@ function App() {
               "What is the best way to improve my resume?",
               "How can I book a session with a mentor?"
             ]}
-            defaultOpen={true}
+            defaultOpen={false}
             defaultPosition="right"
             defaultWidth={420}
             showAvatar={true}
