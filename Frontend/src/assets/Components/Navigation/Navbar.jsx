@@ -38,7 +38,7 @@ export const Navbar = () => {
           </motion.li>
           <motion.li className="inline-block mx-[3vw]" initial={{scale:0.5}}
           animate={{scale:1}}
-          transition={{duration: 0.3 , ease:"anticipate", delay: 0.5}}>
+          transition={{duration: 0.3 , ease:"anticipate", delay: 0.7}}>
             <NavLink
               to="/About"
               className={({ isActive }) =>
@@ -54,7 +54,7 @@ export const Navbar = () => {
           <motion.li className="inline-block mx-[3vw] "
           initial={{scale:0.5}}
           animate={{scale:1}}
-          transition={{duration: 0.3 , ease:"anticipate", delay: 0.5}}>
+          transition={{duration: 0.3 , ease:"anticipate", delay: 0.9}}>
             <NavLink
               to="/Contact"
               className={({ isActive }) =>
