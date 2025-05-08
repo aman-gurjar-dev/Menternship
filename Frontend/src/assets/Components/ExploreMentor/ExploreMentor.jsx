@@ -81,8 +81,8 @@ const ExploreMentor = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           className="mb-4"
         >
           <FiLoader className="text-purple-500" size={32} />
@@ -121,7 +121,7 @@ const ExploreMentor = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 1 , ease:"anticipate"}}
         className="max-w-7xl mx-auto"
       >
         <div className="text-center mb-8">

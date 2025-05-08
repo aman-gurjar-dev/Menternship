@@ -57,7 +57,7 @@ const Sidebar = ({ routeMap, activeTab, setActiveTab }) => {
             initial={{ x: isMobile ? -300 : 0, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: isMobile ? -300 : 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3 , ease:"anticipate"}}
             className={`w-64 text-white font-bold p-6 space-y-6 shadow-lg h-screen fixed bg-gray-800 z-50 ${
               isMobile ? "top-0 left-0" : ""
             }`}
@@ -65,7 +65,7 @@ const Sidebar = ({ routeMap, activeTab, setActiveTab }) => {
             <nav>
               <ul className="space-y-4">
                 {Object.entries(routeMap).map(([name, path]) => (
-                  <motion.li key={name} whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+                  <motion.li key={name} whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 , ease:"anticipate"}}>
                     <NavLink
                       to={path}
                       onClick={() => {

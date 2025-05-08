@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../../utils/config";
+import { motion } from "framer-motion";
 import { FiPlus, FiCheck, FiX, FiTrash2, FiSkipForward } from "react-icons/fi";
 import { RiMoonClearLine } from "react-icons/ri";
 
@@ -109,7 +110,11 @@ const Goals = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-6">
+    < motion.div className="min-h-screen bg-gray-900 text-gray-100 p-6" 
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: "anticipate" }}
+    >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center mb-8">
@@ -239,7 +244,7 @@ const Goals = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
