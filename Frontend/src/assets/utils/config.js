@@ -1,7 +1,7 @@
+// config.js
+
 const config = {
-  // In development, use localhost or the tunnel URL
-  // In production, use the deployed backend URL
-  backendUrl: 'https://menternship-mini-project.vercel.app'
+  backendUrl: import.meta.env.VITE_BACKEND_URL
 };
 
-export default config; 
+export default config;

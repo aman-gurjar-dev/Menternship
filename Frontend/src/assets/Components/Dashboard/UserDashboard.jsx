@@ -69,7 +69,6 @@ const UserDashboard = () => {
     Messages: "/UserDashboard/message",
     MyMentor: "/UserDashboard/mymentor",
     ExploreMentor: "/UserDashboard/explorementor",
-    MentorDashboard: (id) => `/mentordashboard/${id}`,
     Goals: "/UserDashboard/usergoals",
     Resource: "/UserDashboard/resource",
     Community: "/UserDashboard/forums",
@@ -85,7 +84,7 @@ const UserDashboard = () => {
       // Check if token exists
       if (!token) {
         setError("You must be logged in to view this page!");
-        navigate("/Login", { replace: true });
+        navigate("/", { replace: true });
         return;
       }
 
@@ -108,13 +107,23 @@ const UserDashboard = () => {
           localStorage.removeItem("chatMentorId");
           sessionStorage.clear();
           setError("Your session has expired. Please login again.");
-          navigate("/Login", { replace: true });
+          navigate("/", { replace: true });
         } else {
           setError("Failed to fetch user data. Please try again.");
+          localStorage.removeItem("token");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("mentor");
+          localStorage.removeItem("chatMentorId");
+          navigate("/", { replace: true });
         }
       }
     } catch (err) {
       console.error("Error fetching user data:", err);
+      localStorage.removeItem("token");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("mentor");
+      localStorage.removeItem("chatMentorId");
+      navigate("/", { replace: true });
       setError("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);
@@ -141,7 +150,7 @@ const UserDashboard = () => {
       sessionStorage.clear();
       
       // Navigate to login page
-      navigate("/Login", { replace: true });
+      navigate("/", { replace: true });
     }
   }, [navigate]);
 
