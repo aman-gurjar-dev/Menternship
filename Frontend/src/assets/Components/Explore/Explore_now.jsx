@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 const Explore_now = () => {
   const location = useLocation();
@@ -21,20 +21,20 @@ const Explore_now = () => {
 
   return (
     <>
-      <motion.div className="min-h-screen relative"
-        initial={{ opacity: 0 , scale: 0.8 }}
-        animate={{ opacity: 1 , scale: 1}}
-      
-        exit={{ opacity: 0 , scale: 0.8 }}
+      <motion.div
+        className="min-h-screen relative"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.5 }}
       >
         {/* Content */}
-        <motion.div className="flex justify-center mt-[5vh] sm:mt-[10vh] px-4"
-        initial={{ opacity: 0 , scale: 0.5 }}
-        animate={{ opacity: 1 , scale: 1}}
-      
-        exit={{ opacity: 0 , scale: 0.5 }}
-        transition={{ duration: 0.5 }}
+        <motion.div
+          className="flex justify-center mt-[5vh] sm:mt-[10vh] px-4"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <div className="w-full max-w-4xl bg-[#be75bf13] shadow rounded-xl p-4 sm:p-6">
             <h1 className="text-center text-xl sm:text-2xl font-bold mt-4">
@@ -46,20 +46,28 @@ const Explore_now = () => {
             </h1>
             <ul className="ml-[2vw] sm:ml-[5vw] mt-[2vh] text-sm sm:text-base lg:text-xl space-y-2 sm:space-y-3">
               <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                <h1 className="text-[#9755B8] inline">1:1 Mentorship Support :</h1>
+                <h1 className="text-[#9755B8] inline">
+                  1:1 Mentorship Support :
+                </h1>
                 <span>Get personalized guidance from industry experts.</span>
               </li>
               <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                 <h1 className="text-[#9755B8] inline">Interview Prep :</h1>
-                <span>Practice real interview questions and coding challenges.</span>
+                <span>
+                  Practice real interview questions and coding challenges.
+                </span>
               </li>
               <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                <h1 className="text-[#9755B8] inline">Internship Opportunities :</h1>
+                <h1 className="text-[#9755B8] inline">
+                  Internship Opportunities :
+                </h1>
                 <span>Gain hands-on experience with top companies.</span>
               </li>
               <li className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                 <h1 className="text-[#9755B8] inline">Live Project Ideas :</h1>
-                <span>Work on real-world projects to build your portfolio.</span>
+                <span>
+                  Work on real-world projects to build your portfolio.
+                </span>
               </li>
             </ul>
 

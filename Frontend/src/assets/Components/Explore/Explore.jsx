@@ -13,7 +13,7 @@ const Explore = () => {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: 100 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       >
         <motion.h1
           className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white mb-6 pt-6"
@@ -30,10 +30,10 @@ const Explore = () => {
             {/* Web Development */}
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.5, x: -100 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.5, x: 100 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1}}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ duration: 0.3, delay: 0.1 , ease: "easeInOut"}}
             >
               <div className="bg-[#2a1f2e] p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img
@@ -58,10 +58,10 @@ const Explore = () => {
             {/* Artificial Intelligence */}
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.5, x: -100 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.5, x: 100 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1, y:0, x: 0 }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ duration: 0.3, delay: 0.3 , ease: "easeInOut"}}
             >
               <div className="bg-[#2a1f2e] p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img src={ai} alt="AI" className="w-full sm:w-64 rounded-lg" />
@@ -82,10 +82,10 @@ const Explore = () => {
             {/* Data Science */}
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.5, x: -100 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.5, x: 100 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 0.95, y:0, x: 0 }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ duration: 0.3, delay: 0.5 , ease: "easeInOut"}}
             >
               <div className="bg-[#2a1f2e] p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img src={ds} alt="Data Science" className="w-full sm:w-64 rounded-lg" />
