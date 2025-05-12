@@ -200,8 +200,6 @@ const Login = () => {
               className="w-full text-left text-sm ml-2 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
             >
               Don't have an account?{" "}
@@ -209,7 +207,17 @@ const Login = () => {
                 to="/Register"
                 className="text-blue-500 cursor-pointer inline-block"
               >
-                <span className="font-arial underline">Register here</span>
+                <motion.span
+                  whileHover={{
+                    scale: 1.05,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                  }}
+                  className="font-arial underline"
+                >
+                  Register here
+                </motion.span>
               </NavLink>
             </motion.div>
           </div>
