@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import config from "../../utils/config";
 
 const Register = () => {
@@ -19,143 +19,173 @@ const Register = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isMentor, setIsMentor] = useState(false);
 
-  // Check email domain when email changes
   useEffect(() => {
-    if (formData.email.includes("@menternship.com")) {
-      setIsMentor(true);
-    } else {
-      setIsMentor(false);
-    }
+    setIsMentor(formData.email.includes("@menternship.com"));
   }, [formData.email]);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   useEffect(() => {
     setAlreadyRegistered(false);
     setSuccessMessage("");
   }, [formData]);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match! Please enter the same password.");
+      alert("Passwords do not match!");
       return;
     }
 
     try {
-      // Determine the registration endpoint based on email domain
       const registerUrl = isMentor
         ? `${config.backendUrl}/api/mentors/register`
         : `${config.backendUrl}/api/students/register`;
 
       const res = await axios.post(registerUrl, formData, {
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
       });
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userRole", isMentor ? "mentor" : "student");
-      
-      setSuccessMessage(`Registration successful! Redirecting to ${isMentor ? "mentor" : "student"} dashboard...`);
+
+      setSuccessMessage(
+        `Registration successful! Redirecting to ${
+          isMentor ? "mentor" : "student"
+        } dashboard...`
+      );
 
       setTimeout(() => {
         navigate(isMentor ? "/mentor-dashboard" : "/UserDashboard");
       }, 2000);
-      
     } catch (err) {
-      console.error("Registration Failed:", err.response ? err.response.data : err.message);
-
-      if (err.response?.status === 400 && err.response.data.error === "Email already exists") {
+      console.error("Registration Failed:", err.response || err.message);
+      if (
+        err.response?.status === 400 &&
+        err.response.data.error === "Email already exists"
+      ) {
         setAlreadyRegistered(true);
       } else {
-        alert(`Registration failed! ${err.response?.data?.error || "Check console for details."}`);
+        alert(err.response?.data?.error || "Registration failed!");
       }
     }
   };
 
+  const fields = [
+    { name: "name", type: "text", placeholder: "Name" },
+    { name: "username", type: "text", placeholder: "User Name" },
+    { name: "email", type: "email", placeholder: "Enter email" },
+    { name: "password", type: "password", placeholder: "Enter your password" },
+    {
+      name: "confirmPassword",
+      type: "password",
+      placeholder: "Confirm your password",
+    },
+  ];
+
   return (
-    <motion.div className="w-full h-screen flex justify-center items-center relative overflow-hidden px-4 text-black"
-    initial={{ opacity: 0 , scale: 0.8}}
-    animate={{ opacity: 1 , scale: 1}}
-    exit={{ opacity: 0 , scale: 0.8}}
-    transition={{ duration: 0.5 }}
+    <motion.div
+      className="w-full h-screen flex justify-center items-center relative overflow-hidden px-4 text-black"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-lg xl:max-w-lg h-auto bg-transparent border-2 border-violet-200 rounded-2xl p-6 flex flex-col items-center relative z-10">
-        <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 pb-2 bg-clip-text text-transparent">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 pb-2 bg-clip-text text-transparent"
+        >
           Register Now
-        </h1>
+        </motion.h1>
 
         {isMentor && (
           <p className="text-purple-500 mb-2">Registering as a Mentor</p>
         )}
 
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 items-center w-full px-4">
-          <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col space-y-4  mt-3 items-center w-full px-4"
+        >
+          {fields.map((field, index) => (
+            <motion.input
+              key={field.name}
+              name={field.name}
+              type={field.type}
+              placeholder={field.placeholder}
+              value={formData[field.name]}
+              onChange={handleChange}
+              className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{
+                scale: 1.05,
+                transition: {
+                  delay: 0, // delay before hover animation
+                  duration: 0.2,
+                },
+              }}
+              whileTap={{
+                scale: 0.95,
+                transition: {
+                  delay: 0, // delay before hover animation
+                  duration: 0.2,
+                },
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                delay: index * 0.1,
+              }}
+              required
+            />
+          ))}
 
-          <input
-            name="username"
-            type="text"
-            placeholder="User Name"
-            className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            name="email"
-            type="email"
-            placeholder="Enter email"
-            className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirm your password"
-            className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-
-          {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
+          {successMessage && (
+            <p className="text-green-500 text-sm">{successMessage}</p>
+          )}
 
           {alreadyRegistered && (
             <p className="text-red-500 text-xs sm:text-sm">
-              User is already registered! <NavLink to="/Login" className="text-blue-400">Login here</NavLink>
+              User is already registered!{" "}
+              <NavLink to="/Login" className="text-blue-400">
+                Login here
+              </NavLink>
             </p>
           )}
 
-          <button
+          <motion.button
             type="submit"
             className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white text-sm sm:text-base md:text-lg lg:text-xl py-2 px-6 rounded-2xl mt-2 w-full text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{
+              scale: 1.05,
+              transition: {
+                delay: 0, // delay before hover animation
+                duration: 0.2,
+              },
+            }}
+            whileTap={{
+              scale: 0.95,
+              transition: {
+                delay: 0, // delay before hover animation
+                duration: 0.2,
+              },
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              delay: fields.length * 0.1,
+            }}
           >
             Register Now
-          </button>
+          </motion.button>
         </form>
       </div>
     </motion.div>

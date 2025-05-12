@@ -31,9 +31,14 @@ const Explore = () => {
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
               initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1}}
+              animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.7 }}
-              transition={{ duration: 0.3, delay: 0.1 , ease: "easeInOut"}}
+              transition={{
+                duration: 0.3,
+                type: "spring",
+                delay: 0.1,
+                ease: "easeInOut",
+              }}
             >
               <div className="bg-[#2a1f2e] p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img
@@ -59,9 +64,14 @@ const Explore = () => {
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
               initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1, y:0, x: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.7 }}
-              transition={{ duration: 0.3, delay: 0.3 , ease: "easeInOut"}}
+              transition={{
+                duration: 0.3,
+                delay: 0.3,
+                type: "spring",
+                ease: "easeInOut",
+              }}
             >
               <div className="bg-[#2a1f2e] p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <img src={ai} alt="AI" className="w-full sm:w-64 rounded-lg" />
@@ -83,12 +93,21 @@ const Explore = () => {
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
               initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 0.95, y:0, x: 0 }}
+              animate={{ opacity: 1, scale: 0.95, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.7 }}
-              transition={{ duration: 0.3, delay: 0.5 , ease: "easeInOut"}}
+              transition={{
+                duration: 0.3,
+                delay: 0.5,
+                type: "spring",
+                ease: "easeInOut",
+              }}
             >
               <div className="bg-[#2a1f2e] p-4 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img src={ds} alt="Data Science" className="w-full sm:w-64 rounded-lg" />
+                <img
+                  src={ds}
+                  alt="Data Science"
+                  className="w-full sm:w-64 rounded-lg"
+                />
                 <div className="mt-4 text-center">
                   <h2 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     Data Science
@@ -115,8 +134,8 @@ const Explore = () => {
           exit={{ opacity: 0, scale: 0.5, x: 100 }}
           transition={{ duration: 0.5 }}
         >
-          Menternship{" "}
-          <span className="inline text-[#7A42B8]">Means</span> <br /> Opportunity
+          Menternship <span className="inline text-[#7A42B8]">Means</span>{" "}
+          <br /> Opportunity
         </motion.div>
       </motion.aside>
 
