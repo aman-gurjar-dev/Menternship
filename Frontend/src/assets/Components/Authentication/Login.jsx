@@ -113,35 +113,31 @@ const Login = () => {
             </div>
 
             <div>
-              <motion.input
+              <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                whileHover={{
-                  scale: 1.05,
-                  transition: {
-                    delay: 0, // delay before hover animation
-                    duration: 0.2,
-                  },
-                }}
-                whileTap={{
-                  scale: 0.95,
-                  transition: {
-                    delay: 0, // delay before hover animation
-                    duration: 0.2,
-                  },
-                }}
                 transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
-                type="password"
-                name="password"
-                value={value.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                className="py-2 px-7 bg-gray-300 rounded-2xl w-full"
-                required
-              />
-              {errors.password && (
-                <span className="text-red-500">{errors.password}</span>
-              )}
+              >
+                <motion.input
+                  whileHover={{
+                    scale: 1.05,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  type="password"
+                  name="password"
+                  value={value.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  className="py-2 px-7 bg-gray-300 rounded-2xl w-full"
+                  required
+                />
+                {errors.password && (
+                  <span className="text-red-500">{errors.password}</span>
+                )}
+              </motion.span>
             </div>
 
             <motion.div
@@ -161,7 +157,7 @@ const Login = () => {
                   duration: 0.2,
                 },
               }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
+              transition={{ type: "spring", stiffness: 300, duration: 0.5 }}
               className="w-full text-left ml-2 text-sm"
             >
               <NavLink
@@ -171,30 +167,33 @@ const Login = () => {
                 Forgot Password?
               </NavLink>
             </motion.div>
-
-            <motion.button
+            <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{
-                scale: 1.05,
-                transition: {
-                  delay: 0, // delay before hover animation
-                  duration: 0.2,
-                },
-              }}
-              whileTap={{
-                scale: 0.95,
-                transition: {
-                  delay: 0, // delay before hover animation
-                  duration: 0.2,
-                },
-              }}
               transition={{ type: "spring", stiffness: 300, delay: 0.3 }}
-              type="submit"
-              className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-xl py-2 px-10 rounded-4xl text-center w-full cursor-pointer"
             >
-              Login
-            </motion.button>
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+                type="submit"
+                className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-xl py-2 px-10 rounded-4xl text-center w-full cursor-pointer"
+              >
+                Login
+              </motion.button>
+            </motion.span>
 
             <motion.div
               className="w-full text-left text-sm ml-2 text-white"

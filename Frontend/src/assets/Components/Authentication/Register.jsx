@@ -113,16 +113,72 @@ const Register = () => {
           className="flex flex-col space-y-4  mt-3 items-center w-full px-4"
         >
           {fields.map((field, index) => (
-            <motion.input
-              key={field.name}
-              name={field.name}
-              type={field.type}
-              placeholder={field.placeholder}
-              value={formData[field.name]}
-              onChange={handleChange}
-              className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
+            <motion.span
+              className="w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                delay: index * 0.1,
+              }}
+            >
+              <motion.input
+                key={field.name}
+                name={field.name}
+                type={field.type}
+                placeholder={field.placeholder}
+                value={formData[field.name]}
+                onChange={handleChange}
+                className="w-full py-2 px-4 bg-gray-300 rounded-2xl text-center"
+                whileHover={{
+                  scale: 1.05,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                }}
+                required
+              />
+            </motion.span>
+          ))}
+
+          {successMessage && (
+            <p className="text-green-500 text-sm">{successMessage}</p>
+          )}
+
+          {alreadyRegistered && (
+            <p className="text-red-500 text-xs sm:text-sm">
+              User is already registered!{" "}
+              <NavLink to="/Login" className="text-blue-400">
+                Login here
+              </NavLink>
+            </p>
+          )}
+
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              delay: fields.length * 0.1,
+            }}
+          >
+            <motion.button
+              type="submit"
               whileHover={{
                 scale: 1.05,
                 transition: {
@@ -140,52 +196,12 @@ const Register = () => {
               transition={{
                 type: "spring",
                 stiffness: 300,
-                delay: index * 0.1,
               }}
-              required
-            />
-          ))}
-
-          {successMessage && (
-            <p className="text-green-500 text-sm">{successMessage}</p>
-          )}
-
-          {alreadyRegistered && (
-            <p className="text-red-500 text-xs sm:text-sm">
-              User is already registered!{" "}
-              <NavLink to="/Login" className="text-blue-400">
-                Login here
-              </NavLink>
-            </p>
-          )}
-
-          <motion.button
-            type="submit"
-            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white text-sm sm:text-base md:text-lg lg:text-xl py-2 px-6 rounded-2xl mt-2 w-full text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{
-              scale: 1.05,
-              transition: {
-                delay: 0, // delay before hover animation
-                duration: 0.2,
-              },
-            }}
-            whileTap={{
-              scale: 0.95,
-              transition: {
-                delay: 0, // delay before hover animation
-                duration: 0.2,
-              },
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              delay: fields.length * 0.1,
-            }}
-          >
-            Register Now
-          </motion.button>
+              className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white text-sm sm:text-base md:text-lg lg:text-xl py-2 px-6 rounded-2xl mt-2 w-full text-center"
+            >
+              Register Now
+            </motion.button>
+          </motion.div>
         </form>
       </div>
     </motion.div>
