@@ -7,7 +7,7 @@ const Contact_us = () => {
     <>
       <motion.div
         className="invisible md:visible"
-        initial={{ opacity: 0, x: -60 ,y: -90 }}
+        initial={{ opacity: 0, x: -60, y: -90 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
@@ -18,18 +18,16 @@ const Contact_us = () => {
         </span>
       </motion.div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: -50 }} 
-        animate={{ opacity: 1, y: 0 }} 
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="flex flex-col items-center justify-center w-full"
       >
-
         {/* Contact Form Section */}
         <div className="w-[80vw] h-[70vh] flex justify-center items-center mx-[10vw] mt-[3vh]">
-          
           {/* Contact Details */}
-          <motion.div 
+          <motion.div
             className="sm:w-[30vw] h-[70vh] bg-[#A488DB] invisible sm:visible w-0 flex flex-col justify-center items-center"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -43,10 +41,13 @@ const Contact_us = () => {
             </h1>
 
             <div>
-              {[  
-              { icon: <FiPhone />, text: "Phone - +91 9131164828   " },
+              {[
+                { icon: <FiPhone />, text: "Phone - +91 9131164828...." },
                 { icon: <FiMail />, text: "Email - amangurjar160.com" },
-              { icon: <FiMapPin />, text: "Location - Indore, MP   " }
+                {
+                  icon: <FiMapPin />,
+                  text: "Location - Indore, MP...........",
+                },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -63,28 +64,34 @@ const Contact_us = () => {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div 
+          <motion.div
             className="bg-[#2E103B] w-[80vw] sm:w-[50vw] h-[70vh] flex flex-col justify-center items-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
             <div className="flex flex-col w-[80%] sm:w-[60%] items-center">
-              <h1 className="sm:text-4xl font-bold text-2xl text-white">Let’s Talk</h1>
-              <h1 className="sm:text-xl text-blue-400">Feel free to contact us below</h1>
+              <h1 className="sm:text-4xl font-bold text-2xl text-white">
+                Let’s Talk
+              </h1>
+              <h1 className="sm:text-xl text-blue-400">
+                Feel free to contact us below
+              </h1>
 
               {/* Inputs */}
-              {["Your Name...", "Email Id...", "Phone Number"].map((placeholder, index) => (
-                <motion.input
-                  key={index}
-                  type="text"
-                  className="w-full h-[5vh] bg-white text-black text-center rounded-lg block my-4"
-                  placeholder={placeholder}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.2, duration: 0.5 }}
-                />
-              ))}
+              {["Your Name...", "Email Id...", "Phone Number"].map(
+                (placeholder, index) => (
+                  <motion.input
+                    key={index}
+                    type="text"
+                    className="w-full h-[5vh] bg-white text-black text-center rounded-lg block my-4"
+                    placeholder={placeholder}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.2, duration: 0.5 }}
+                  />
+                )
+              )}
 
               <motion.textarea
                 className="w-full h-[10vh] text-black bg-white text-center rounded-lg my-4"

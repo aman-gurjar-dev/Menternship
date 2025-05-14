@@ -30,12 +30,11 @@ const Explore = () => {
             {/* Web Development */}
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.7, y: -40 }}
+              animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.7 }}
               transition={{
                 duration: 0.3,
-                type: "spring",
                 delay: 0.1,
                 ease: "easeInOut",
               }}
@@ -63,13 +62,12 @@ const Explore = () => {
             {/* Artificial Intelligence */}
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.7 }}
+              initial={{ opacity: 0, scale: 0.7, y: -40 }}
               animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.7 }}
               transition={{
                 duration: 0.3,
                 delay: 0.3,
-                type: "spring",
                 ease: "easeInOut",
               }}
             >
@@ -92,13 +90,12 @@ const Explore = () => {
             {/* Data Science */}
             <motion.div
               className="flex flex-col items-center w-full sm:w-auto max-w-xs transform hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, scale: 0.7 }}
+              initial={{ opacity: 0, scale: 0.7, y: -40 }}
               animate={{ opacity: 1, scale: 0.95, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.7 }}
               transition={{
                 duration: 0.3,
                 delay: 0.5,
-                type: "spring",
                 ease: "easeInOut",
               }}
             >
