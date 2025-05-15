@@ -139,6 +139,10 @@ const Home = () => {
           className="absolute bottom-0 max-h-[38vh] right-10"
         />
       </motion.aside>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -bottom-90 -left-100 w-[700px] h-[700px] bg-[#6F42AB] rounded-full blur-3xl opacity-30 "></div>
+        <div className="absolute -bottom-90 -right-80 w-[700px] h-[700px] bg-[#6F42AB] rounded-full blur-3xl opacity-30 delay-1000"></div>
+      </div>
     </div>
   );
 };

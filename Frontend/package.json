@@ -10,8 +10,10 @@
     "preview": "vite preview --port 8080"
   },
   "dependencies": {
-    "@copilotkit/react-core": "^1.8.4",
-    "@copilotkit/react-ui": "^1.8.4",
+    "@copilotkit/react-core": "^1.8.11",
+    "@copilotkit/react-textarea": "^1.8.11",
+    "@copilotkit/react-ui": "^1.8.11",
+    "@copilotkit/runtime": "^1.8.11",
     "@react-pdf-viewer/core": "^3.12.0",
     "@react-pdf-viewer/default-layout": "^3.12.0",
     "@tailwindcss/vite": "^4.0.0",

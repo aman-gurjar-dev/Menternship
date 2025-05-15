@@ -42,16 +42,18 @@ const Contact_us = () => {
 
             <div>
               {[
-                { icon: <FiPhone />, text: "Phone - +91 9131164828...." },
-                { icon: <FiMail />, text: "Email - amangurjar160.com" },
+                { icon: <FiPhone />, text: "Phone - +91 9131164828" },
+                { icon: <FiMail />, text: "Email - amangurjar160@gmail.com" },
                 {
                   icon: <FiMapPin />,
-                  text: "Location - Indore, MP...........",
+                  text: "Location - Indore, MP.......",
                 },
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center justify-center my-[4vh]"
+                  className={`flex items-center justify-center my-[4vh] ${
+                    index !== 1 ? "relative right-9" : ""
+                  }`}
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.2, duration: 0.6 }}

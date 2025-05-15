@@ -13,7 +13,7 @@ import Profile from "./assets/Components/Profile/Profile";
 import effect from "./assets/Images/Ellipse 1.png";
 import { Navbar } from "./assets/Components/Navigation/Navbar";
 import ProtectedRoute from "./utils/ProtectedRoute"; // ✅ Import the Protected Route
-import UserDashboard from "./assets/Components/Dashboard/UserDashboard"
+import UserDashboard from "./assets/Components/Dashboard/UserDashboard";
 import Resources from "./assets/Components/Resource/Resource";
 import YtResource from "./assets/Components/Resource/YtResource";
 import LearningResource from "./assets/Components/Resource/LearningResource";
@@ -42,7 +42,7 @@ const router = createHashRouter([
         {(() => {
           const token = localStorage.getItem("token");
           const userRole = localStorage.getItem("userRole");
-          
+
           if (token) {
             // If user is logged in, redirect to appropriate dashboard
             if (userRole === "mentor") {
@@ -51,7 +51,7 @@ const router = createHashRouter([
               return <Navigate to="/UserDashboard" replace />;
             }
           }
-          
+
           // If not logged in, show home page
           return (
             <>
@@ -149,28 +149,28 @@ const router = createHashRouter([
   },
   {
     path: "/studentProfileForMentor",
-    element:(
+    element: (
       <ProtectedRoute>
-      <StudentProfileForMentors />,
+        <StudentProfileForMentors />,
       </ProtectedRoute>
     ),
   },
   {
     path: "/mentorProfileForStudent",
-    element:(
+    element: (
       <ProtectedRoute>
-      <MentorProfileForStudents />,
+        <MentorProfileForStudents />,
       </ProtectedRoute>
     ),
   },
   {
-  path: "/mentor-dashboard",
-  element: (
-    <ProtectedRoute>
-      <MentorDashboard />
-    </ProtectedRoute>
-  )
-},
+    path: "/mentor-dashboard",
+    element: (
+      <ProtectedRoute>
+        <MentorDashboard />
+      </ProtectedRoute>
+    ),
+  },
   {
     path: "/UserDashboard",
     element: (
@@ -181,7 +181,9 @@ const router = createHashRouter([
     children: [
       {
         path: "", // Default route for UserDashboard
-        element: <h2 className="text-center text-white">Welcome to Dashboard</h2>,
+        element: (
+          <h2 className="text-center text-white">Welcome to Dashboard</h2>
+        ),
       },
       {
         path: "profile",
@@ -189,7 +191,7 @@ const router = createHashRouter([
       },
       {
         path: "usergoals",
-        element: <Goals />
+        element: <Goals />,
       },
       {
         path: "chat_now",
@@ -201,15 +203,15 @@ const router = createHashRouter([
       },
       {
         path: "mymentor",
-        element: <Mymentor />
+        element: <Mymentor />,
       },
       {
         path: "message", // This is the corrected line
         element: <ChatPageWrapper />,
       },
       {
-        path: 'explorementor',
-        element: <ExploreMentor />
+        path: "explorementor",
+        element: <ExploreMentor />,
       },
     ],
   },
@@ -219,13 +221,12 @@ const router = createHashRouter([
   },
   {
     path: "mentordashboard/:id", // ✅ Correct (relative path)
-    element: <MentorDashboard />
+    element: <MentorDashboard />,
   },
 
-
   {
-    path: 'explorementor',
-    element: <ExploreMentor />
+    path: "explorementor",
+    element: <ExploreMentor />,
   },
   {
     path: "learningResources/ytResource/:topic", // ✅ Route for YouTube Resources
@@ -237,7 +238,7 @@ const router = createHashRouter([
   },
   {
     path: "learningResources/pdf/:topic", // ✅ Route for PDF Resources
-    element: <PdfResource />
+    element: <PdfResource />,
   },
   {
     path: "/learningResources/roadmap/:topic",
@@ -246,11 +247,8 @@ const router = createHashRouter([
   {
     path: "/mentor-dashboard/messages",
     element: <ChatPageWrapper />,
-  }
-
+  },
 ]);
-
-
 
 function App() {
   return (
@@ -258,80 +256,95 @@ function App() {
       <body>
         <div className="min-h-screen bg-[#1A171E] text-white relative overflow-hidden">
           <RouterProvider router={router} />
-        </div>
 
-        <CopilotKit publicApiKey="ck_pub_386cadf26332be4af7eb573c5163e3cb">
-          <CopilotSidebar
-            labels={{
-              title: "Menternship AI Assistant",
-              initial: "👋 Hi! How can I help you today?"
-            }}
-            instructions={`You are Menternship's AI Assistant. Help users with mentorship, career guidance, interview prep, and learning resources. Be friendly, concise, and proactive.`}
-            placeholder="Ask me anything about mentorship, careers, or learning..."
-            suggestions={[
-              "Find me a mentor in Data Science",
-              "How do I prepare for interviews?",
-              "Show me learning resources for React",
-              "What is the best way to improve my resume?",
-              "How can I book a session with a mentor?"
-            ]}
-            defaultOpen={false}
-            defaultPosition="right"
-            defaultWidth={420}
-            showAvatar={true}
-            showHeader={true}
-            showFooter={true}
-            showInputBox={true}
-            showSuggestions={true}
-            theme={{
-              "--copilot-sidebar-bg": "linear-gradient(135deg, #1a171e 0%, #7a42b8 100%)",
-              "--copilot-sidebar-header-bg": "rgba(34, 24, 56, 0.85)",
-              "--copilot-sidebar-header-color": "#fff",
-              "--copilot-sidebar-title-font": "700 1.5rem 'Montserrat', sans-serif",
-              "--copilot-sidebar-border-radius": "22px",
-              "--copilot-sidebar-shadow": "0 8px 32px 0 rgba(58, 29, 110, 0.25)",
-              "--copilot-sidebar-input-bg": "rgba(255,255,255,0.08)",
-              "--copilot-sidebar-input-color": "#fff",
-              "--copilot-sidebar-input-border": "1.5px solid #7a42b8",
-              "--copilot-sidebar-suggestion-bg": "rgba(122,66,184,0.12)",
-              "--copilot-sidebar-suggestion-color": "#fff",
-              "--copilot-sidebar-suggestion-hover-bg": "#7a42b8",
-              "--copilot-sidebar-suggestion-hover-color": "#fff",
-              "--copilot-sidebar-bubble-user-bg": "#7a42b8",
-              "--copilot-sidebar-bubble-user-color": "#fff",
-              "--copilot-sidebar-bubble-ai-bg": "rgba(255,255,255,0.10)",
-              "--copilot-sidebar-bubble-ai-color": "#fff",
-              "--copilot-sidebar-footer-bg": "rgba(34, 24, 56, 0.85)",
-              "--copilot-sidebar-footer-color": "#fff",
-              "--copilot-sidebar-scrollbar-thumb": "#7a42b8",
-              "--copilot-sidebar-scrollbar-track": "#2d1a3a"
-            }}
-            header={
-              <div style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                padding: "16px 0"
-              }}>
-                <img src="/logo192.png" alt="Menternship Logo" style={{ width: 40, height: 40, borderRadius: "50%" }} />
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: "1.2rem" }}>Menternship AI Assistant</div>
-                  <div style={{ fontSize: "0.95rem", color: "#bfa3e3" }}>Your smart career companion</div>
+          <CopilotKit publicApiKey="ck_pub_386cadf26332be4af7eb573c5163e3cb">
+            <CopilotSidebar
+              labels={{
+                title: "Menternship AI Assistant",
+                initial: "👋 Hi! How can I help you today?",
+              }}
+              instructions={`You are Menternship's AI Assistant. Help users with mentorship, career guidance, interview prep, and learning resources. Be friendly, concise, and proactive.`}
+              placeholder="Ask me anything about mentorship, careers, or learning..."
+              suggestions={[
+                "Find me a mentor in Data Science",
+                "How do I prepare for interviews?",
+                "Show me learning resources for React",
+                "What is the best way to improve my resume?",
+                "How can I book a session with a mentor?",
+              ]}
+              defaultOpen={false}
+              defaultPosition="right"
+              defaultWidth={420}
+              showAvatar={true}
+              showHeader={true}
+              showFooter={true}
+              showInputBox={true}
+              showSuggestions={true}
+              theme={{
+                "--copilot-sidebar-bg":
+                  "linear-gradient(135deg, #1a171e 0%, #7a42b8 100%)",
+                "--copilot-sidebar-header-bg": "rgba(34, 24, 56, 0.85)",
+                "--copilot-sidebar-header-color": "#fff",
+                "--copilot-sidebar-title-font":
+                  "700 1.5rem 'Montserrat', sans-serif",
+                "--copilot-sidebar-border-radius": "22px",
+                "--copilot-sidebar-shadow":
+                  "0 8px 32px 0 rgba(58, 29, 110, 0.25)",
+                "--copilot-sidebar-input-bg": "rgba(255,255,255,0.08)",
+                "--copilot-sidebar-input-color": "#fff",
+                "--copilot-sidebar-input-border": "1.5px solid #7a42b8",
+                "--copilot-sidebar-suggestion-bg": "rgba(122,66,184,0.12)",
+                "--copilot-sidebar-suggestion-color": "#fff",
+                "--copilot-sidebar-suggestion-hover-bg": "#7a42b8",
+                "--copilot-sidebar-suggestion-hover-color": "#fff",
+                "--copilot-sidebar-bubble-user-bg": "#7a42b8",
+                "--copilot-sidebar-bubble-user-color": "#fff",
+                "--copilot-sidebar-bubble-ai-bg": "rgba(255,255,255,0.10)",
+                "--copilot-sidebar-bubble-ai-color": "#fff",
+                "--copilot-sidebar-footer-bg": "rgba(34, 24, 56, 0.85)",
+                "--copilot-sidebar-footer-color": "#fff",
+                "--copilot-sidebar-scrollbar-thumb": "#7a42b8",
+                "--copilot-sidebar-scrollbar-track": "#2d1a3a",
+              }}
+              header={
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "16px 0",
+                  }}
+                >
+                  <img
+                    src="/logo192.png"
+                    alt="Menternship Logo"
+                    style={{ width: 40, height: 40, borderRadius: "50%" }}
+                  />
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: "1.2rem" }}>
+                      Menternship AI Assistant
+                    </div>
+                    <div style={{ fontSize: "0.95rem", color: "#bfa3e3" }}>
+                      Your smart career companion
+                    </div>
+                  </div>
                 </div>
-              </div>
-            }
-            footer={
-              <div style={{
-                textAlign: "center",
-                fontSize: "0.9rem",
-                color: "#bfa3e3",
-                padding: "8px 0"
-              }}>
-                © 2025 Menternship. All rights reserved.
-              </div>
-            }
-          />
-        </CopilotKit>
+              }
+              footer={
+                <div
+                  style={{
+                    textAlign: "center",
+                    fontSize: "0.9rem",
+                    color: "#bfa3e3",
+                    padding: "8px 0",
+                  }}
+                >
+                  © 2025 Menternship. All rights reserved.
+                </div>
+              }
+            />
+          </CopilotKit>
+        </div>
       </body>
     </html>
   );
