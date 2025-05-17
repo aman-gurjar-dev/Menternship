@@ -51,8 +51,8 @@ const Explore = () => {
                     Web Development
                   </h2>
                   <MotionNavLink
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0, transition: { delay: 0.7 } }}
                     whileHover={{
                       scale: 1.1,
                     }}
@@ -87,8 +87,8 @@ const Explore = () => {
                     Artificial Intelligence
                   </h2>
                   <MotionNavLink
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0, transition: { delay: 0.9 } }}
                     whileHover={{
                       scale: 1.1,
                     }}
@@ -127,8 +127,8 @@ const Explore = () => {
                     Data Science
                   </h2>
                   <MotionNavLink
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0, transition: { delay: 1.1 } }}
                     whileHover={{
                       scale: 1.1,
                     }}

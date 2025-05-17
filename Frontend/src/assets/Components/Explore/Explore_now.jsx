@@ -75,8 +75,8 @@ const Explore_now = () => {
 
             <div className="flex justify-center items-center mt-8 sm:mt-12">
               <MotionNavLink
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
                 whileHover={{
                   scale: 1.1,
                 }}
