@@ -5,6 +5,7 @@ import ds from "../../Images/data-science-analyzing-interpreting-complex-data-pr
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const MotionNavLink = motion(NavLink);
 const Explore = () => {
   return (
     <div className="min-h-screen relative bg-gradient-to-b from-[#1A171E] to-[#2a1f2e]">
@@ -49,12 +50,20 @@ const Explore = () => {
                   <h2 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     Web Development
                   </h2>
-                  <NavLink
+                  <MotionNavLink
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                    whileTap={{ scale: 0.95, opacity: 0.8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    style={{ transformOrigin: "center" }}
                     to="/Explore_now"
                     className="inline-block p-2 px-7 rounded-3xl bg-[#e3a7eb17] hover:bg-[#e3a7eb30] text-white transition-colors duration-300"
                   >
                     Explore More
-                  </NavLink>
+                  </MotionNavLink>
                 </div>
               </div>
             </motion.div>
@@ -77,12 +86,20 @@ const Explore = () => {
                   <h2 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     Artificial Intelligence
                   </h2>
-                  <NavLink
+                  <MotionNavLink
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                    whileTap={{ scale: 0.95, opacity: 0.8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    style={{ transformOrigin: "center" }}
                     to="/Explore_ai"
                     className="inline-block p-2 px-7 rounded-3xl bg-[#e3a7eb17] hover:bg-[#e3a7eb30] text-white transition-colors duration-300"
                   >
                     Explore More
-                  </NavLink>
+                  </MotionNavLink>
                 </div>
               </div>
             </motion.div>
@@ -109,12 +126,20 @@ const Explore = () => {
                   <h2 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     Data Science
                   </h2>
-                  <NavLink
+                  <MotionNavLink
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                    whileTap={{ scale: 0.95, opacity: 0.8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    style={{ transformOrigin: "center" }}
                     to="/Explore_ds"
                     className="inline-block p-2 px-7 rounded-3xl bg-[#e3a7eb17] hover:bg-[#e3a7eb30] text-white transition-colors duration-300"
                   >
                     Explore More
-                  </NavLink>
+                  </MotionNavLink>
                 </div>
               </div>
             </motion.div>

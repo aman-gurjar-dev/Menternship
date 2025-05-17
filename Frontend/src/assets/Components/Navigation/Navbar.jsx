@@ -25,14 +25,25 @@ export const Navbar = () => {
               key={item}
               className="inline-block mx-[3vw]"
               initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                ease: "easeInOut",
-                delay: index * 0.2,
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.4,
+                  ease: "easeInOut",
+                  delay: index * 0.2,
+                },
               }}
-              whileHover={{ scale: 1.1, color: "#60A5FA" }}
-              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              whileHover={{
+                scale: 1.2,
+                color: "#60A5FA",
+                transition: { duration: 0.2, delay: 0.1 },
+              }}
+              whileTap={{
+                scale: 0.9,
+                transition: { duration: 0.2, delay: 0.1 },
+              }}
             >
               <NavLink
                 to={`/${item === "Home" ? "" : item}`}

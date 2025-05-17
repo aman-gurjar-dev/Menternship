@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const MotionNavLink = motion(NavLink);
+
 const Explore_now = () => {
   const location = useLocation();
   const path = location.pathname;
@@ -72,12 +74,20 @@ const Explore_now = () => {
             </ul>
 
             <div className="flex justify-center items-center mt-8 sm:mt-12">
-              <NavLink
+              <MotionNavLink
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  scale: 1.1,
+                }}
+                whileTap={{ scale: 0.95, opacity: 0.8 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{ transformOrigin: "center" }}
                 to="/login"
                 className="bg-[#e3a7eb4c] py-2 px-6 sm:px-[10vw] rounded-4xl text-lg sm:text-xl font-semibold hover:bg-[#e3a7eb60] transition-colors duration-300 cursor-pointer relative z-20"
               >
                 Join us now
-              </NavLink>
+              </MotionNavLink>
             </div>
           </div>
         </motion.div>

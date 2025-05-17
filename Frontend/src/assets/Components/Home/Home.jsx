@@ -31,50 +31,56 @@ const Home = () => {
           </h2>
         </section>
 
-        <section className="mt-[6vh] sm:ml-[10vw] ml-3">
-          <div className="mb-[1vh]">
+        <motion.section className="mt-[6vh] sm:ml-[10vw] ml-3">
+          <motion.div className="mb-[1vh] flex gap-4 flex-wrap  mt-10">
             <MotionNavLink
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.1 }}
+              to="/login"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
+              whileHover={{
+                scale: 1.1,
+              }}
               whileTap={{ scale: 0.95, opacity: 0.8 }}
               transition={{ type: "spring", stiffness: 300 }}
               style={{ transformOrigin: "center" }}
-              to="/Login"
-              className="bg-[#477CD6] p-1 sm:px-16 px-7 rounded-3xl mr-5 mb-5 font-bold"
+              className="bg-[#477CD6] text-white p-2 sm:px-16 px-7 rounded-3xl font-bold"
             >
               Start Today
             </MotionNavLink>
 
             <MotionNavLink
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.1 }}
+              to="/register"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.65 } }}
+              whileHover={{
+                scale: 1.1,
+              }}
               whileTap={{ scale: 0.95, opacity: 0.8 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
               style={{ transformOrigin: "center" }}
-              to="/Register"
-              className="bg-[#FFF5F5] text-black p-1 sm:px-16 px-7 rounded-3xl font-bold"
+              className="bg-[#FFF5F5] text-black p-2 sm:px-16 px-7 rounded-3xl font-bold"
             >
               Register
             </MotionNavLink>
-          </div>
+          </motion.div>
 
-          <div className="mt-8">
+          <motion.div className="mb-[1vh] flex gap-4 flex-wrap mt-4">
             <MotionNavLink
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.1 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.8 } }}
+              whileHover={{
+                scale: 1.1,
+              }}
               whileTap={{ scale: 0.95, opacity: 0.8 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
+              transition={{ type: "spring", stiffness: 300 }}
               style={{ transformOrigin: "center" }}
               to="/Explore_more"
-              className="bg-[#D68F47] text-black rounded-3xl sm:px-41 sm:py-3 px-23 py-3 font-bold"
+              className="bg-[#D68F47] text-black rounded-3xl sm:px-40 sm:py-3 px-23 py-3 font-bold"
             >
               Explore More
             </MotionNavLink>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
       </motion.main>
 
       <motion.aside
