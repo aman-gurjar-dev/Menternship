@@ -11,14 +11,14 @@ const About_page = () => {
     <div className="px-4  md:px-12 lg:px-24 bg-gradient-to-b  min-h-screen">
       {/* Menternship Meaning */}
       <motion.div
-        className="invisible md:visible"
+        className="invisible md:visible relative left-8  -top-2"
         initial={{ opacity: 0, x: -60, y: -160 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <span className="absolute top-4 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-12 lg:px-15 md:text-sm xl:text-xl text-center font-semibold lg:text-xl text-[#FFFFFF] z-10 p-2 m-auto">
+        <span className="absolute top-4 lg:-right-10 right-3 rounded-full bg-[#685f7319] px-12 lg:px-15 md:text-sm xl:text-xl text-center font-semibold lg:text-xl text-[#FFFFFF] z-10 p-2 m-auto">
           Menternship{" "}
-          <p className="inline text-[#7A42B5] relative z-11">Means</p> <br />
+          <p className="inline text-[#6f24c0] relative z-11">Means</p> <br />
           Opportunity
         </span>
       </motion.div>

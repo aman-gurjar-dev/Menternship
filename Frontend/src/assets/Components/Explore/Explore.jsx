@@ -150,14 +150,16 @@ const Explore = () => {
       {/* Mentorship Means Opportunity */}
       <motion.aside className="invisible md:visible">
         <motion.div
-          className="absolute -top-10 lg:right-10 right-3 rounded-full bg-[#1a171e7b] px-6 lg:px-15 text-sm xl:text-xl text-center font-semibold text-[#FFFFFF] z-10 p-2 backdrop-blur-sm"
-          initial={{ opacity: 0, scale: 0.5, x: -100 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          exit={{ opacity: 0, scale: 0.5, x: 100 }}
-          transition={{ duration: 0.5 }}
+          className="invisible md:visible absolute top-19 right-10 w-full lg:top-19 lg:right-20 z-10"
+          initial={{ opacity: 0, x: -60, y: -160 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Menternship <span className="inline text-[#7A42B8]">Means</span>{" "}
-          <br /> Opportunity
+          <span className="absolute top-4 lg:-right-10 right-3 rounded-full bg-[#685f7319] px-12 lg:px-15 md:text-sm xl:text-xl text-center font-semibold lg:text-xl text-[#FFFFFF] z-10 p-2 m-auto">
+            Menternship{" "}
+            <p className="inline text-[#6f24c0] relative z-11">Means</p> <br />
+            Opportunity
+          </span>
         </motion.div>
       </motion.aside>
 

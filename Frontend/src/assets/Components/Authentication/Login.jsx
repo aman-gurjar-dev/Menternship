@@ -4,6 +4,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import config from "../../utils/config";
 import Loginvalidation from "./Loginvalidation";
+const MotionNavLink = motion(NavLink);
 
 const Login = () => {
   const navigate = useNavigate();
@@ -140,37 +141,35 @@ const Login = () => {
               </motion.span>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{
-                scale: 1.05,
-                transition: {
-                  delay: 0, // delay before hover animation
-                  duration: 0.2,
-                },
-              }}
-              whileTap={{
-                scale: 0.95,
-                transition: {
-                  delay: 0, // delay before hover animation
-                  duration: 0.2,
-                },
-              }}
-              transition={{ type: "spring", stiffness: 300, duration: 0.5 }}
-              className="w-full text-left ml-2 text-sm"
-            >
-              <NavLink
+            <motion.div className="w-full text-left ml-2 text-sm flex">
+              <MotionNavLink
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+                whileHover={{
+                  scale: 1.1,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.9,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                transition={{ type: "spring", stiffness: 300, duration: 0.5 }}
                 to="/ForgotPassword"
                 className="text-blue-500 cursor-pointer"
               >
                 Forgot Password?
-              </NavLink>
+              </MotionNavLink>
             </motion.div>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.3 }}
+              transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
             >
               <motion.button
                 whileHover={{
@@ -199,10 +198,27 @@ const Login = () => {
               className="w-full text-left text-sm ml-2 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
+              transition={{ type: "spring", stiffness: 300, delay: 0.5 }}
             >
               Don't have an account?{" "}
-              <NavLink
+              <MotionNavLink
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.6 } }}
+                whileHover={{
+                  scale: 1.1,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.9,
+                  transition: {
+                    delay: 0, // delay before hover animation
+                    duration: 0.2,
+                  },
+                }}
+                transition={{ type: "spring", stiffness: 300, duration: 0.5 }}
                 to="/Register"
                 className="text-blue-500 cursor-pointer inline-block"
               >
@@ -217,7 +233,7 @@ const Login = () => {
                 >
                   Register here
                 </motion.span>
-              </NavLink>
+              </MotionNavLink>
             </motion.div>
           </div>
         </form>
