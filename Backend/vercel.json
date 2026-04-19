@@ -1,17 +1,15 @@
 {
-    "version": 2,
-   "builds": [
+  "version": 2,
+  "builds": [
     {
       "src": "app.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["dist/**"] }
+      "use": "@vercel/node"
     }
   ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "app.js",
-            "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
-        }
-    ]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.js"
+    }
+  ]
 }
